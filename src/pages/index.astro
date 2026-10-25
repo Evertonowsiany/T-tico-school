@@ -1,11 +1,2109 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import featProjeto from '../assets/images/feat-projeto.jpg';
+import featPlanner from '../assets/images/problem-illustration.png';
+import featFinanceiro from '../assets/images/feat-financeiro.jpg';
+import featPatrimonio from '../assets/images/feat-patrimonio.jpg';
+import seloGarantia from '../assets/images/selo-garantia.png';
+
+// ---------------------------------------------------------------------------
+// SEO
+// ---------------------------------------------------------------------------
+const title = 'Método Tático School | Planilha Inteligente de Produtividade & Metas';
+const description =
+	'Organize sua rotina, alcance seus objetivos e pare de desperdiçar tempo. Conheça a Planilha Inteligente do Método Tático School com Gestão Financeira e Patrimônio inclusos.';
+
+// Checkout link routing
+// You can set your custom checkout URL here (e.g. Kiwify, Hotmart, Eduzz, etc.)
+const CHECKOUT_URL = '';
+
+// ---------------------------------------------------------------------------
+// Ícones (Phosphor)
+// ---------------------------------------------------------------------------
+const checkPath =
+	'M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z';
+const arrowPath =
+	'M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z';
+const folderPath =
+	'M216,72H131.31L104,44.69A15.88,15.88,0,0,0,92.69,40H40A16,16,0,0,0,24,56V200.62A15.41,15.41,0,0,0,39.39,216h177.5A15.13,15.13,0,0,0,232,200.89V88A16,16,0,0,0,216,72ZM40,56H92.69l16,16H40Z';
+
+// ---------------------------------------------------------------------------
+// Conteúdo
+// ---------------------------------------------------------------------------
+const trustItems = ['Acesso Imediato', '7 Dias de Garantia 100%', '100% no Google Sheets (Sem mensalidades)'];
+
+const problems = [
+	{
+		num: '01',
+		title: 'Fazendo várias coisas ao mesmo tempo',
+		text: 'O mito da multitarefa divide seu foco, multiplica erros e gera exaustão sem que nada chegue ao fim. O Método Tático ensina a priorizar a única coisa que realmente move o ponteiro hoje.',
+		tag: 'Foco Direcionado',
+		tilt: 'ds-tilt-left',
+	},
+	{
+		num: '02',
+		title: 'Adiando tarefas e metas importantes',
+		text: 'A procrastinação não é preguiça — é falta de clareza do próximo passo. Com objetivos desmembrados em etapas acessíveis, você vence a inércia e executa sem resistência.',
+		tag: 'Fim da Procrastinação',
+		tilt: '',
+	},
+	{
+		num: '03',
+		title: 'Dizendo "sim" para tudo e todos',
+		text: 'Quem não tem um planejamento visível vira refém da agenda alheia. Assuma o leme da sua rotina, aprenda a blindar suas horas produtivas e preserve sua energia para suas conquistas.',
+		tag: 'Domínio da Agenda',
+		tilt: 'ds-tilt-right',
+	},
+];
+
+const features = [
+	{
+		badge: 'Módulo 01',
+		meta: 'Planejamento Macro',
+		bonus: false,
+		image: featProjeto,
+		alt: 'Projetos',
+		title: 'Projetos: Detalhando as etapas do seu objetivo',
+		text: 'Aprenda a quebrar metas complexas em passos sequenciais claros. Tenha uma linha do tempo realista para nunca mais ficar perdido no meio do caminho.',
+		bullets: [
+			'Estrutura de fases e marcos com prazos tangíveis',
+			'Controle visual de status: A Fazer, Em Andamento e Concluído',
+		],
+	},
+	{
+		badge: 'Módulo 02',
+		meta: 'Execução Diária',
+		bonus: false,
+		image: featPlanner,
+		alt: 'Planner GPS',
+		title: 'Planner: O GPS que te levará ao seu destino',
+		text: 'O centro de comando da sua rotina diária. Elimine a ansiedade matinal sabendo com exatidão o que precisa ser feito a cada hora do dia.',
+		bullets: [
+			'Painel diário e semanal com visual limpo e sem distrações',
+			'Acesse e edite em qualquer lugar pelo aplicativo Google Sheets',
+		],
+	},
+	{
+		id: 'bonus',
+		badge: 'Bônus Especial 01',
+		meta: '100% Grátis',
+		bonus: true,
+		image: featFinanceiro,
+		alt: 'Controle Financeiro',
+		title: 'Gestão Financeira Descomplicada',
+		text: 'Produtividade e tranquilidade financeira caminham lado a lado. Domine suas entradas, saídas, custos fixos e saiba exatamente quanto pode poupar a cada mês.',
+		bullets: [
+			'Categorização simples de despesas e receitas',
+			'Cálculo automatizado do fluxo de caixa sem complicação',
+		],
+	},
+	{
+		badge: 'Bônus Especial 02',
+		meta: '100% Grátis',
+		bonus: true,
+		image: featPatrimonio,
+		alt: 'Evolução Patrimonial',
+		title: 'Controle & Evolução de Patrimônio',
+		text: 'Acompanhe o crescimento dos seus bens, investimentos e reservas ao longo do tempo. Veja seu patrimônio líquido evoluir mês após mês com métricas claras.',
+		bullets: [
+			'Visão consolidada de ativos, contas e investimentos',
+			'Metas financeiras de médio e longo prazo registradas',
+		],
+	},
+];
+
+const checklist = [
+	{ strong: 'Planilha Tático School Completa', rest: ' (Google Sheets) pronta para duplicar e usar' },
+	{ strong: 'Módulo de Projetos Táticos', rest: ' para detalhar etapas e prazos de qualquer meta' },
+	{ strong: 'Módulo Planner Tático (GPS)', rest: ' para organização das suas tarefas diárias e semanais' },
+	{ strong: '[SUPER BÔNUS 1] Planilha de Controle Financeiro Pessoal', rest: ' completa' },
+	{ strong: '[SUPER BÔNUS 2] Painel de Controle e Evolução de Patrimônio', rest: '' },
+	{ strong: 'Aulas didáticas de implementação', rest: ' ensinando como utilizar cada ferramenta' },
+	{ strong: 'Suporte individual dedicado:', rest: ' Via e-mail' },
+	{ strong: 'Acesso vitalício à sua cópia:', rest: ' Sem mensalidades, sem custos extras' },
+];
+
+const faqs = [
+	{
+		q: 'Como funciona o suporte?',
+		a: 'Nos primeiros 07 dias você tem o suporte pelo e-mail, depois você também terá suporte via WhatsApp direto para tirar dúvidas sobre o uso e aplicação da planilha.',
+	},
+	{
+		q: 'Preciso investir para aplicar as técnicas desse método?',
+		a: 'Você não vai precisar investir nada além do valor promocional de acesso. Não há mensalidades nem compra de softwares pagos. Apenas com as ferramentas gratuitas fornecidas (como o Google Sheets) você já se tornará mais produtivo.',
+	},
+	{
+		q: 'O acesso é vitalício?',
+		a: 'A cópia que você cria para si é sua para sempre!',
+	},
+	{
+		q: 'Consigo acompanhar meu planner no celular?',
+		a: 'Sim! Você pode checar, preencher e atualizar seu planner a qualquer hora diretamente no aplicativo Google Planilhas do seu celular (iOS ou Android), sincronizado em tempo real com o computador.',
+	},
+	{
+		q: 'Em que formato é o planner?',
+		a: 'O planner é em formato de Planilha do Google (Google Sheets). Você recebe o acesso por e-mail e com um único clique gera a sua cópia pessoal na nuvem, pronta para uso.',
+	},
+	{
+		q: 'Para quem é o planner?',
+		a: 'Para qualquer pessoa que precisa organizar suas tarefas, projetos e objetivos de maneira clara, visual e detalhada — seja você um profissional autônomo, estudante, empreendedor ou alguém buscando mais foco no dia a dia.',
+	},
+];
+
+const footerLinks = [
+	{ href: '#hero', label: 'Início' },
+	{ href: '#metodo', label: 'O Método' },
+	{ href: '#solucao', label: 'O Que Inclui' },
+	{ href: '#oferta', label: 'Garantir Vaga' },
+	{ href: '#garantia', label: 'Garantia 7 Dias' },
+	{ href: '#faq', label: 'FAQ' },
+];
+
+const year = 2027;
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<!doctype html>
+<html lang="pt-BR">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		<meta name="robots" content="max-image-preview:large" />
+		<meta name="generator" content={Astro.generator} />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+
+		<!-- Open Graph -->
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:locale" content="pt_BR" />
+
+		<!-- Google Fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@300;400;500;600;700;800&display=swap"
+			rel="stylesheet"
+		/>
+
+		<!-- Meta Pixel Code -->
+		<script is:inline>
+			!(function (f, b, e, v, n, t, s) {
+				if (f.fbq) return;
+				n = f.fbq = function () {
+					n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
+				};
+				if (!f._fbq) f._fbq = n;
+				n.push = n;
+				n.loaded = !0;
+				n.version = '2.0';
+				n.queue = [];
+				t = b.createElement(e);
+				t.async = !0;
+				t.src = v;
+				s = b.getElementsByTagName(e)[0];
+				s.parentNode.insertBefore(t, s);
+			})(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+			fbq('init', '755309876572693');
+			fbq('track', 'PageView');
+		</script>
+		<noscript>
+			<img
+				height="1"
+				width="1"
+				style="display:none"
+				src="https://www.facebook.com/tr?id=755309876572693&ev=PageView&noscript=1"
+				alt=""
+			/>
+		</noscript>
+		<!-- End Meta Pixel Code -->
+
+		<!-- Google tag (gtag.js) -->
+		<script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-08RLCD95HF"></script>
+		<script is:inline>
+			window.dataLayer = window.dataLayer || [];
+			function gtag() {
+				dataLayer.push(arguments);
+			}
+			gtag('js', new Date());
+			gtag('config', 'G-08RLCD95HF');
+		</script>
+		<!-- End Google tag -->
+
+		<!-- Microsoft Clarity -->
+		<script is:inline>
+			(function (c, l, a, r, i, t, y) {
+				c[a] =
+					c[a] ||
+					function () {
+						(c[a].q = c[a].q || []).push(arguments);
+					};
+				t = l.createElement(r);
+				t.async = 1;
+				t.src = 'https://www.clarity.ms/tag/' + i;
+				y = l.getElementsByTagName(r)[0];
+				y.parentNode.insertBefore(t, y);
+			})(window, document, 'clarity', 'script', 'uufogsuwyj');
+		</script>
+		<!-- End Clarity -->
+	</head>
+
+	<body>
+		<!-- Background Ambience (Skewed Rays & Grain) -->
+		<div class="ds-bg-viewport" aria-hidden="true">
+			<div class="ds-bg-rays">
+				{Array.from({ length: 5 }).map(() => <div class="ds-bg-ray" />)}
+			</div>
+			<div class="ds-bg-noise"></div>
+		</div>
+
+		<div class="ds-app">
+			<!-- Top Urgent Notice Bar -->
+			<aside class="ds-topbar" aria-label="Aviso de promoção">
+				<span class="ds-topbar-tag">Condição {year}</span>
+				<span>
+					Acesso completo ao <strong>Método Tático School + 2 Bônus</strong> por apenas
+					<strong>12x de R$ 3,08</strong> ou R$ 37,00 à vista!
+				</span>
+			</aside>
+
+			<main class="ds-main">
+				<!-- ===================================================================
+				     HERO SECTION: VSL & Value Proposition
+				     =================================================================== -->
+				<section class="ds-hero" id="hero">
+					<div class="ds-container">
+						<div class="ds-hero-header">
+							<div class="ds-eyebrow">
+								<span class="ds-eyebrow-line" aria-hidden="true"></span>
+								<em>Produtividade &amp; Organização Tática</em>
+								<span class="ds-eyebrow-line reverse" aria-hidden="true"></span>
+							</div>
+
+							<h1 class="ds-heading-display">
+								Identificar seus objetivos é o caminho <span class="tone-secondary">mais rápido para o sucesso.</span>
+							</h1>
+
+							<p class="ds-lead">
+								Pare de perder dias inteiros com tarefas dispersas. Conheça a <strong>Planilha Inteligente do Método Tático</strong>:
+								um sistema prático no Google Sheets que transforma o caos da rotina em foco, clareza e execução diária — acessível
+								no celular e no computador.
+							</p>
+						</div>
+
+						<!-- Video Presentation -->
+						<div class="ds-video-stage">
+							<div class="ds-video-frame">
+								<div class="ds-video-header">
+									<div class="ds-video-dots" aria-hidden="true">
+										<span class="ds-video-dot"></span>
+										<span class="ds-video-dot"></span>
+										<span class="ds-video-dot"></span>
+									</div>
+									<span>AULA EXPLICATIVA DO MÉTODO</span>
+									<span class="ds-video-quality">
+										<span class="ds-pulse-dot ds-pulse-dot-sm"></span>
+										HD 1080p
+									</span>
+								</div>
+
+								<div class="ds-video-container">
+									<iframe
+										src="https://www.youtube-nocookie.com/embed/h4NzUoUVi38?rel=0&modestbranding=1"
+										title="Apresentação do Método Tático School"
+										allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+										referrerpolicy="strict-origin-when-cross-origin"
+										allowfullscreen></iframe>
+								</div>
+							</div>
+						</div>
+
+						<!-- CTA & Trust Pillars -->
+						<div class="ds-hero-actions">
+							<div class="ds-btn-pill-wrap">
+								<a href="#oferta" class="ds-btn-pill" id="hero-cta">
+									<span>QUERO DAR O PRIMEIRO PASSO</span>
+									<span class="ds-btn-arrow" aria-hidden="true">
+										<svg width="14" height="14" viewBox="0 0 256 256" fill="currentColor"><path d={arrowPath}></path></svg>
+									</span>
+								</a>
+							</div>
+
+							<div class="ds-trust-pills">
+								{
+									trustItems.map((item) => (
+										<span class="ds-trust-item">
+											<svg viewBox="0 0 256 256" fill="currentColor">
+												<path d={checkPath} />
+											</svg>
+											{item}
+										</span>
+									))
+								}
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<!-- ===================================================================
+				     PROBLEM SECTION
+				     =================================================================== -->
+				<section class="ds-section" id="metodo">
+					<div class="ds-container">
+						<div class="ds-section-header">
+							<div class="ds-eyebrow">
+								<span class="ds-eyebrow-line" aria-hidden="true"></span>
+								<em>Chega de Sobrecarga e Frustração</em>
+								<span class="ds-eyebrow-line reverse" aria-hidden="true"></span>
+							</div>
+							<h2 class="ds-heading-section">Você não vai mais desperdiçar seu tempo:</h2>
+							<p class="ds-lead">
+								Três armadilhas silenciosas que roubam horas preciosas da sua semana e impedem você de alcançar o que realmente
+								planejou.
+							</p>
+						</div>
+
+						<div class="ds-grid-3">
+							{
+								problems.map((p) => (
+									<article class:list={['ds-card-raised', 'ds-problem-card', p.tilt]}>
+										<div>
+											<div class="ds-badge-num">{p.num}</div>
+											<h3>{p.title}</h3>
+											<p>{p.text}</p>
+										</div>
+										<span class="ds-card-tag">{p.tag}</span>
+									</article>
+								))
+							}
+						</div>
+					</div>
+				</section>
+
+				<!-- ===================================================================
+				     SOLUTION SECTION
+				     =================================================================== -->
+				<section class="ds-section ds-section-tinted" id="solucao">
+					<div class="ds-container">
+						<div class="ds-section-header">
+							<div class="ds-eyebrow">
+								<span class="ds-eyebrow-line" aria-hidden="true"></span>
+								<em>O Ecossistema Completo</em>
+								<span class="ds-eyebrow-line reverse" aria-hidden="true"></span>
+							</div>
+							<h2 class="ds-heading-section">O que você vai dominar e receber com esse método</h2>
+							<p class="ds-lead">
+								Uma estrutura pronta, validada e intuitiva no Google Sheets. Você só precisa abrir e seguir o passo a passo para
+								transformar sua produtividade.
+							</p>
+						</div>
+
+						<div class="ds-grid-2">
+							{
+								features.map((f) => (
+									<article class="ds-card-raised ds-feature-card" id={f.id}>
+										<div>
+											<div class="ds-feature-badge-wrap">
+												<span class:list={['ds-feature-badge', { bonus: f.bonus }]}>{f.badge}</span>
+												<span class:list={['ds-feature-meta', { 'is-bonus': f.bonus }]}>{f.meta}</span>
+											</div>
+											<div class="ds-feature-media has-cover">
+												<Image
+													src={f.image}
+													alt={f.alt}
+													class="is-cover"
+													widths={[400, 800]}
+													sizes="(max-width: 809px) 100vw, 560px"
+													loading="lazy"
+												/>
+											</div>
+											<div class="ds-feature-content">
+												<h3>{f.title}</h3>
+												<p>{f.text}</p>
+												<ul class="ds-feature-bullets">
+													{f.bullets.map((b) => (
+														<li class="ds-feature-bullet">
+															<svg viewBox="0 0 256 256" fill="currentColor">
+																<path d={checkPath} />
+															</svg>
+															{b}
+														</li>
+													))}
+												</ul>
+											</div>
+										</div>
+									</article>
+								))
+							}
+						</div>
+					</div>
+				</section>
+
+				<!-- ===================================================================
+				     MANIFESTO BREAK
+				     =================================================================== -->
+				<section class="ds-section ds-manifesto">
+					<div class="ds-container">
+						<div class="ds-card-dark">
+							<div class="ds-manifesto-inner">
+								<div class="ds-eyebrow ds-eyebrow-dark">
+									<span class="ds-eyebrow-line" aria-hidden="true"></span>
+									<span class="ds-eyebrow-line reverse" aria-hidden="true"></span>
+								</div>
+								<h2>A diferença entre o sucesso e o fracasso está em como você escolhe agir hoje!</h2>
+								<p>
+									Continuar procrastinando e adiando seus sonhos... ou investir menos de R$ 0,11 por dia para ter domínio definitivo
+									sobre sua rotina, suas metas e seu futuro?
+								</p>
+
+								<div class="ds-btn-pill-wrap ds-btn-pill-wrap-inverse">
+									<a href="#oferta" class="ds-btn-pill ds-btn-pill-inverse" id="manifesto-cta">
+										<span>QUERO MUDAR MEUS RESULTADOS</span>
+										<span class="ds-btn-arrow" aria-hidden="true">
+											<svg width="14" height="14" viewBox="0 0 256 256" fill="currentColor"><path d={arrowPath}></path></svg>
+										</span>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<!-- ===================================================================
+				     OFFER SECTION (#oferta)
+				     =================================================================== -->
+				<section class="ds-section ds-offer-section" id="oferta">
+					<div class="ds-container">
+						<div class="ds-section-header">
+							<div class="ds-eyebrow">
+								<span class="ds-eyebrow-line" aria-hidden="true"></span>
+								<em>Vagas Promocionais Abertas</em>
+								<span class="ds-eyebrow-line reverse" aria-hidden="true"></span>
+							</div>
+							<h2 class="ds-heading-section">Para você ter acesso a esse método, basta garantir sua vaga agora mesmo!</h2>
+							<p class="ds-lead">Acesso instantâneo a todo o material atualizado {year}.</p>
+						</div>
+
+						<div class="ds-offer-box">
+							<div class="ds-offer-top-ribbon">
+								<span>⚡ ACESSO COMPLETO ATUALIZADO PARA {year}.</span>
+								<span class="ds-ribbon-tag">OFERTA POR TEMPO LIMITADO</span>
+							</div>
+
+							<div class="ds-offer-body">
+								<div class="ds-offer-headline">
+									<h3>Método Tático School</h3>
+									<p>O pacote definitivo de produtividade, organização de metas e gestão pessoal.</p>
+								</div>
+
+								<ul class="ds-offer-checklist">
+									{
+										checklist.map((item) => (
+											<li class="ds-check-item">
+												<span class="ds-check-icon">
+													<svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+														<polyline points="20 6 9 17 4 12" />
+													</svg>
+												</span>
+												<span>
+													<strong>{item.strong}</strong>
+													{item.rest}
+												</span>
+											</li>
+										))
+									}
+								</ul>
+
+								<div class="ds-pricing-display">
+									<div class="ds-price-anchor">Por apenas:</div>
+									<div class="ds-price-installments">12x <span>R$</span> 3,08</div>
+									<div class="ds-price-cash">ou R$ 37,00 à vista</div>
+								</div>
+
+								<div class="ds-offer-cta-wrap">
+									<div class="ds-btn-pill-wrap ds-btn-pill-wrap-offer">
+										<button type="button" class="ds-btn-pill ds-btn-pill-offer" id="btn-checkout" data-checkout-url={CHECKOUT_URL}>
+											<span>QUERO DAR O PRIMEIRO PASSO</span>
+											<span class="ds-btn-arrow" aria-hidden="true">
+												<svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor"><path d={arrowPath}></path></svg>
+											</span>
+										</button>
+									</div>
+
+									<div class="ds-offer-guarantee-micro">
+										<svg viewBox="0 0 256 256" fill="currentColor"><path d={checkPath}></path></svg>
+										<span>Compra 100% Criptografada • Garantia Incondicional de 7 Dias • Acesso Imediato</span>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<!-- ===================================================================
+				     GUARANTEE SECTION
+				     =================================================================== -->
+				<section class="ds-section ds-guarantee-section" id="garantia">
+					<div class="ds-container">
+						<div class="ds-card-raised ds-guarantee-card">
+							<div class="ds-guarantee-grid">
+								<div class="ds-guarantee-badge-col">
+									<Image
+										src={seloGarantia}
+										alt="Selo de 7 Dias de Garantia 100% Seguro"
+										class="ds-guarantee-seal"
+										width={440}
+										loading="lazy"
+									/>
+								</div>
+								<div class="ds-guarantee-content">
+									<div class="ds-eyebrow ds-eyebrow-tight">
+										<em>Risco Zero Para Você</em>
+									</div>
+									<h3>100% SEGURO — GARANTIA TOTAL DE 7 DIAS</h3>
+									<p>
+										Você ainda vai receber <strong>7 dias grátis</strong> para aprender e aplicar. Caso mesmo depois disso você ainda
+										não se convença de que esse método é capaz de mudar a sua vida e seus resultados, dentro desse período de 7 dias
+										você pode solicitar seu dinheiro de volta que eu devolvo 100%.
+									</p>
+									<p>
+										Sem perguntas, sem letras miúdas. Então pare de perder mais tempo, garanta agora a sua vaga e dê o primeiro passo
+										para mudar o seu futuro.
+									</p>
+									<div class="ds-guarantee-action">
+										<a href="#oferta" class="ds-btn-secondary" id="guarantee-cta">
+											<span>Quero Testar Sem Nenhum Risco</span>
+											<span aria-hidden="true">→</span>
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<!-- ===================================================================
+				     FAQ ACCORDION
+				     =================================================================== -->
+				<section class="ds-section" id="faq">
+					<div class="ds-container">
+						<div class="ds-section-header">
+							<div class="ds-eyebrow">
+								<span class="ds-eyebrow-line" aria-hidden="true"></span>
+								<em>Perguntas Frequentes</em>
+								<span class="ds-eyebrow-line reverse" aria-hidden="true"></span>
+							</div>
+							<h2 class="ds-heading-section">Dúvidas Frequentes</h2>
+							<p class="ds-lead">
+								Tudo o que você precisa saber sobre o acesso, compatibilidade e suporte do Método Tático School.
+							</p>
+						</div>
+
+						<div class="ds-faq-stack">
+							{
+								faqs.map((faq, i) => (
+									<div class="ds-faq-item">
+										<button
+											type="button"
+											class="ds-faq-trigger"
+											id={`faq-trigger-${i + 1}`}
+											aria-expanded="false"
+											aria-controls={`faq-content-${i + 1}`}
+										>
+											<span>{faq.q}</span>
+											<span class="ds-faq-icon" aria-hidden="true">
+												+
+											</span>
+										</button>
+										<div class="ds-faq-content" id={`faq-content-${i + 1}`} role="region" aria-labelledby={`faq-trigger-${i + 1}`}>
+											<p>{faq.a}</p>
+										</div>
+									</div>
+								))
+							}
+						</div>
+					</div>
+				</section>
+			</main>
+
+			<!-- ===================================================================
+			     FOOTER
+			     =================================================================== -->
+			<footer class="ds-footer">
+				<div class="ds-footer-rays" aria-hidden="true"></div>
+				<div class="ds-container">
+					<div class="ds-footer-grid">
+						<div class="ds-footer-brand">
+							<div class="ds-brand-logo ds-brand-logo-inverse">
+								<svg viewBox="0 0 256 256"><path d={folderPath}></path></svg>
+							</div>
+							<span>Tático School</span>
+						</div>
+
+						<ul class="ds-footer-links">
+							{
+								footerLinks.map((link) => (
+									<li>
+										<a href={link.href} class="ds-footer-link">
+											{link.label}
+										</a>
+									</li>
+								))
+							}
+							<li>
+								<button type="button" class="ds-footer-link ds-footer-link-btn" id="open-termos" data-open-modal="modal-termos">
+									Termos de Uso
+								</button>
+							</li>
+							<li>
+								<button
+									type="button"
+									class="ds-footer-link ds-footer-link-btn"
+									id="open-privacidade"
+									data-open-modal="modal-privacidade"
+								>
+									Políticas de Privacidade
+								</button>
+							</li>
+						</ul>
+
+						<p class="ds-footer-copy">
+							© {year} Tático School. Todos os direitos reservados.<br />
+							Este site e seu conteúdo não são afiliados ao Google, Meta ou Facebook. Os resultados podem variar de acordo com o
+							comprometimento e aplicação individual de cada aluno.
+						</p>
+					</div>
+				</div>
+			</footer>
+		</div>
+
+		<!-- Modal: Termos de Uso -->
+		<div class="ds-modal-backdrop" id="modal-termos" role="dialog" aria-modal="true" aria-labelledby="modal-termos-title">
+			<div class="ds-modal">
+				<button type="button" class="ds-modal-close" data-close-modal="modal-termos" aria-label="Fechar">✕</button>
+				<h3 id="modal-termos-title">Termos de Uso</h3>
+				<p>
+					Bem-vindo ao <strong>Tático School</strong>. Ao adquirir ou utilizar este produto, você concorda com os seguintes termos e
+					condições:
+				</p>
+				<p>
+					1. <strong>Uso Pessoal:</strong> O material, planilhas e vídeos são licenciados para uso estritamente individual. É proibida
+					a redistribuição, revenda, compartilhamento público de links de acesso ou reprodução total ou parcial sem autorização prévia
+					por escrito.
+				</p>
+				<p>2. <strong>Acesso e Atualizações:</strong> O comprador tem acesso à sua cópia da planilha atualizada {year}.</p>
+				<p>
+					3. <strong>Garantia de 7 Dias:</strong> Em cumprimento ao Código de Defesa do Consumidor, você dispõe de 7 dias a partir da
+					aprovação da compra para solicitar o cancelamento e reembolso integral caso não fique satisfeito.
+				</p>
+				<p>
+					4. <strong>Resultados:</strong> Os métodos e ferramentas são fornecidos como suporte de organização. Os resultados práticos
+					dependem do engajamento e execução consistente por parte do usuário.
+				</p>
+			</div>
+		</div>
+
+		<!-- Modal: Políticas de Privacidade -->
+		<div
+			class="ds-modal-backdrop"
+			id="modal-privacidade"
+			role="dialog"
+			aria-modal="true"
+			aria-labelledby="modal-privacidade-title"
+		>
+			<div class="ds-modal">
+				<button type="button" class="ds-modal-close" data-close-modal="modal-privacidade" aria-label="Fechar">✕</button>
+				<h3 id="modal-privacidade-title">Políticas de Privacidade</h3>
+				<p>A sua privacidade é de suma importância para nós no <strong>Tático School</strong>.</p>
+				<p>
+					1. <strong>Coleta de Dados:</strong> Coletamos apenas os dados essenciais para o processamento do seu pedido e envio do acesso
+					ao produto (como nome e e-mail no ato do checkout).
+				</p>
+				<p>
+					2. <strong>Uso dos Dados:</strong> Seus dados não serão vendidos, alugados ou compartilhados com terceiros, exceto com as
+					plataformas de pagamento seguras e processamento necessárias para liberação da compra.
+				</p>
+				<p>
+					3. <strong>Segurança:</strong> Todas as transações financeiras são criptografadas com certificado SSL padrão bancário.
+				</p>
+				<p>
+					4. <strong>Cookies e Rastreamento:</strong> Utilizamos pixels de conversão anônimos (Google Analytics, Meta Pixel)
+					estritamente para medição de tráfego e melhoria da experiência de navegação.
+				</p>
+			</div>
+		</div>
+
+		<!-- Interactive JavaScript -->
+		<script>
+			// FAQ Accordion Toggle
+			const faqItems = document.querySelectorAll<HTMLElement>('.ds-faq-item');
+
+			faqItems.forEach((item) => {
+				const trigger = item.querySelector<HTMLButtonElement>('.ds-faq-trigger');
+				trigger?.addEventListener('click', () => {
+					const isActive = item.classList.contains('active');
+
+					// Close all other items
+					faqItems.forEach((el) => {
+						el.classList.remove('active');
+						el.querySelector('.ds-faq-trigger')?.setAttribute('aria-expanded', 'false');
+					});
+
+					// Toggle current
+					if (!isActive) {
+						item.classList.add('active');
+						trigger.setAttribute('aria-expanded', 'true');
+					}
+				});
+			});
+
+			// Modal Handlers
+			const openModal = (id: string) => document.getElementById(id)?.classList.add('open');
+			const closeModal = (id: string) => document.getElementById(id)?.classList.remove('open');
+
+			document.querySelectorAll<HTMLElement>('[data-open-modal]').forEach((btn) => {
+				btn.addEventListener('click', () => openModal(btn.dataset.openModal!));
+			});
+
+			document.querySelectorAll<HTMLElement>('[data-close-modal]').forEach((btn) => {
+				btn.addEventListener('click', () => closeModal(btn.dataset.closeModal!));
+			});
+
+			document.querySelectorAll<HTMLElement>('.ds-modal-backdrop').forEach((backdrop) => {
+				backdrop.addEventListener('click', (event) => {
+					if (event.target === backdrop) closeModal(backdrop.id);
+				});
+			});
+
+			document.addEventListener('keydown', (event) => {
+				if (event.key === 'Escape') {
+					document.querySelectorAll('.ds-modal-backdrop.open').forEach((m) => m.classList.remove('open'));
+				}
+			});
+
+			// Checkout link routing (URL definida no frontmatter: CHECKOUT_URL)
+			const checkoutBtn = document.getElementById('btn-checkout');
+			checkoutBtn?.addEventListener('click', () => {
+				const url = checkoutBtn.dataset.checkoutUrl?.trim();
+				if (url) {
+					window.open(url, '_blank');
+				} else {
+					// Smooth scroll to offer section if no checkout URL configured yet
+					document.getElementById('oferta')?.scrollIntoView({ behavior: 'smooth' });
+				}
+			});
+		</script>
+	</body>
+</html>
+
+<style is:global>
+	/* ==========================================================================
+	   HANZO DESIGN SYSTEM — TÁTICO SCHOOL MODERN SALES THEME
+	   Tailored for high conversion, tactile aesthetics, and modern performance
+	   ========================================================================== */
+
+	:root {
+		/* Hanzo Color Tokens */
+		--ds-bg: #d9d9d9;
+		--ds-bg-gradient: linear-gradient(225deg, #f7f7f7 0%, #ececec 45%, #d9d9d9 100%);
+		--ds-surface-raised: #ffffff;
+		--ds-surface-glass: rgba(255, 255, 255, 0.72);
+		--ds-surface-dark: #121212;
+		--ds-surface-dark-card: #1c1c1c;
+		--ds-surface-dark-frame: #242424;
+
+		--ds-ink: #000000;
+		--ds-ink-light: #222222;
+		--ds-text-primary: #0a0a0a;
+		--ds-text-secondary: rgba(0, 0, 0, 0.55);
+		--ds-text-tertiary: rgba(0, 0, 0, 0.38);
+		--ds-text-inverse: #ffffff;
+		--ds-text-inverse-muted: rgba(255, 255, 255, 0.65);
+
+		--ds-accent: #ff3700;
+		--ds-accent-hover: #e03000;
+		--ds-accent-glow: rgba(255, 55, 0, 0.25);
+		--ds-status-green: #0cb300;
+		--ds-status-green-glow: rgba(12, 179, 0, 0.3);
+
+		/* Borders & Shadows */
+		--ds-ring-white: 0 0 0 8px rgba(255, 255, 255, 0.28);
+		--ds-ring-dark: 0 0 0 8px rgba(255, 255, 255, 0.12);
+		--ds-ring-accent: 0 0 0 6px rgba(255, 55, 0, 0.2);
+		--ds-shadow-raised: 0 16px 28px -6px rgba(0, 0, 0, 0.08), 0 6px 12px -4px rgba(0, 0, 0, 0.04);
+		--ds-shadow-floating: 0 24px 44px -8px rgba(0, 0, 0, 0.12), 0 10px 20px -5px rgba(0, 0, 0, 0.06);
+		--ds-shadow-dark: 0 24px 50px rgba(0, 0, 0, 0.45);
+		--ds-border-hairline: 1px solid rgba(0, 0, 0, 0.08);
+		--ds-border-dark-hairline: 1px solid rgba(255, 255, 255, 0.1);
+
+		/* Typography */
+		--ds-font-sans: 'Inter Display', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+		--ds-font-serif: 'Instrument Serif', Georgia, serif;
+		--ds-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+		/* Layout */
+		--ds-max-w: 1200px;
+		--ds-radius-card: 22px;
+		--ds-radius-pill: 9999px;
+		--ds-radius-badge: 12px;
+	}
+
+	/* Base Reset & Smooth Scroll */
+	*,
+	*::before,
+	*::after {
+		box-sizing: border-box;
+		margin: 0;
+		padding: 0;
+	}
+
+	html {
+		scroll-behavior: smooth;
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+		background-color: var(--ds-bg);
+		color: var(--ds-text-primary);
+		font-family: var(--ds-font-sans);
+	}
+
+	body {
+		min-height: 100vh;
+		position: relative;
+		overflow-x: hidden;
+		background: var(--ds-bg-gradient);
+		color: var(--ds-text-primary);
+		line-height: 1.5;
+	}
+
+	/* Background Scene: Skewed Rays & Noise Overlay */
+	.ds-bg-viewport {
+		position: fixed;
+		inset: 0;
+		pointer-events: none;
+		z-index: 0;
+		overflow: hidden;
+	}
+
+	.ds-bg-rays {
+		position: absolute;
+		inset: -20%;
+		opacity: 0.7;
+	}
+
+	.ds-bg-ray {
+		position: absolute;
+		height: 200%;
+		width: 140px;
+		background: linear-gradient(180deg, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0) 100%);
+		transform: skewX(45deg);
+		filter: blur(28px);
+	}
+
+	.ds-bg-ray:nth-child(1) { left: 10%; opacity: 0.45; width: 180px; }
+	.ds-bg-ray:nth-child(2) { left: 32%; opacity: 0.35; width: 120px; }
+	.ds-bg-ray:nth-child(3) { left: 55%; opacity: 0.5; width: 220px; }
+	.ds-bg-ray:nth-child(4) { left: 78%; opacity: 0.3; width: 160px; }
+	.ds-bg-ray:nth-child(5) { left: 92%; opacity: 0.4; width: 110px; }
+
+	.ds-bg-noise {
+		position: absolute;
+		inset: 0;
+		background-image: url('/assets/noise.png');
+		background-repeat: repeat;
+		background-size: 150px auto;
+		opacity: 0.045;
+		mix-blend-mode: multiply;
+	}
+
+	/* Foreground Container */
+	.ds-app {
+		position: relative;
+		z-index: 1;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		width: 100%;
+	}
+
+	.ds-main {
+		width: 100%;
+	}
+
+	.ds-container {
+		width: 100%;
+		max-width: var(--ds-max-w);
+		padding-left: clamp(16px, 4vw, 40px);
+		padding-right: clamp(16px, 4vw, 40px);
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	/* ==========================================================================
+	   TOP NOTIFICATION BAR
+	   ========================================================================== */
+	.ds-topbar {
+		width: 100%;
+		background: #000000;
+		color: #ffffff;
+		padding: 8px 16px;
+		font-size: 12.5px;
+		font-weight: 500;
+		letter-spacing: -0.01em;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+		gap: 10px;
+		border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+		position: relative;
+		z-index: 20;
+	}
+
+	.ds-topbar strong {
+		color: #ffaa88;
+	}
+
+	.ds-topbar-tag {
+		background: var(--ds-accent);
+		color: #ffffff;
+		font-size: 10.5px;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.06em;
+		padding: 2px 7px;
+		border-radius: 4px;
+	}
+
+	/* ==========================================================================
+	   BRAND LOGO
+	   ========================================================================== */
+	.ds-brand-logo {
+		display: grid;
+		place-items: center;
+		width: 32px;
+		height: 32px;
+		background: var(--ds-ink);
+		color: #ffffff;
+		border-radius: 50%;
+		font-size: 14px;
+	}
+
+	.ds-brand-logo svg {
+		width: 18px;
+		height: 18px;
+		fill: #ffffff;
+	}
+
+	.ds-brand-logo-inverse {
+		background: #ffffff;
+		color: #000000;
+	}
+
+	.ds-brand-logo-inverse svg {
+		fill: #000000;
+	}
+
+	/* Pulse dot */
+	.ds-pulse-dot {
+		width: 7px;
+		height: 7px;
+		background-color: var(--ds-status-green);
+		border-radius: 50%;
+		box-shadow: 0 0 0 0 var(--ds-status-green-glow);
+		animation: pulse-ring 2s infinite;
+	}
+
+	.ds-pulse-dot-sm {
+		width: 6px;
+		height: 6px;
+	}
+
+	@keyframes pulse-ring {
+		0% { box-shadow: 0 0 0 0 rgba(12, 179, 0, 0.6); }
+		70% { box-shadow: 0 0 0 8px rgba(12, 179, 0, 0); }
+		100% { box-shadow: 0 0 0 0 rgba(12, 179, 0, 0); }
+	}
+
+	/* ==========================================================================
+	   TYPOGRAPHY SYSTEM (Eyebrow, Headings, Leads)
+	   ========================================================================== */
+	.ds-eyebrow {
+		display: inline-flex;
+		align-items: center;
+		gap: 12px;
+		margin-bottom: 14px;
+	}
+
+	.ds-eyebrow-tight {
+		margin-bottom: 8px;
+	}
+
+	.ds-eyebrow-line {
+		width: 28px;
+		height: 1px;
+		background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.3));
+	}
+
+	.ds-eyebrow-line.reverse {
+		background: linear-gradient(270deg, transparent, rgba(0, 0, 0, 0.3));
+	}
+
+	.ds-eyebrow em {
+		font-family: var(--ds-font-serif);
+		font-style: italic;
+		font-size: clamp(20px, 2.4vw, 26px);
+		color: rgba(0, 0, 0, 0.68);
+		font-weight: 400;
+		letter-spacing: 0.01em;
+	}
+
+	.ds-eyebrow-dark em {
+		color: rgba(255, 255, 255, 0.75);
+	}
+
+	.ds-eyebrow-dark .ds-eyebrow-line {
+		background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3));
+	}
+
+	.ds-eyebrow-dark .ds-eyebrow-line.reverse {
+		background: linear-gradient(270deg, transparent, rgba(255, 255, 255, 0.3));
+	}
+
+	.ds-heading-display {
+		font-size: clamp(38px, 4.8vw, 68px);
+		line-height: 1.08;
+		font-weight: 500;
+		letter-spacing: -0.05em;
+		color: var(--ds-ink);
+		margin-bottom: 20px;
+	}
+
+	.ds-heading-display em,
+	.ds-heading-display .tone-secondary {
+		color: var(--ds-text-secondary);
+		font-style: normal;
+		font-weight: 400;
+	}
+
+	.ds-heading-display .accent-text {
+		color: var(--ds-accent);
+	}
+
+	.ds-heading-section {
+		font-size: clamp(28px, 3.5vw, 44px);
+		line-height: 1.15;
+		font-weight: 500;
+		letter-spacing: -0.04em;
+		color: var(--ds-ink);
+		margin-bottom: 16px;
+	}
+
+	.ds-lead {
+		font-size: clamp(16px, 1.6vw, 20px);
+		line-height: 1.5;
+		color: var(--ds-text-secondary);
+		max-width: 680px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	/* ==========================================================================
+	   BUTTONS & CTAs (Tactile Pill Button with Glowing Ring)
+	   ========================================================================== */
+	.ds-btn-pill-wrap {
+		display: inline-block;
+		background: rgba(255, 255, 255, 0.38);
+		padding: 6px;
+		border-radius: var(--ds-radius-pill);
+		box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05);
+		transition: transform 0.25s ease, background-color 0.25s ease;
+	}
+
+	.ds-btn-pill-wrap:hover {
+		transform: translateY(-2px);
+		background: rgba(255, 255, 255, 0.6);
+	}
+
+	.ds-btn-pill {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: 12px;
+		background: var(--ds-ink);
+		color: #ffffff !important;
+		text-decoration: none;
+		font-family: inherit;
+		font-size: clamp(14px, 1.3vw, 16px);
+		font-weight: 600;
+		letter-spacing: -0.01em;
+		padding: 16px 36px;
+		border-radius: var(--ds-radius-pill);
+		border: 0;
+		cursor: pointer;
+		box-shadow: inset 0 -12px 24px rgba(255, 255, 255, 0.08), 0 8px 24px rgba(0, 0, 0, 0.25);
+		transition: all 0.25s ease;
+	}
+
+	.ds-btn-pill:hover {
+		background: #181818;
+		box-shadow: inset 0 -12px 24px rgba(255, 255, 255, 0.12), 0 12px 30px rgba(0, 0, 0, 0.32);
+	}
+
+	.ds-btn-pill .ds-btn-arrow {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 24px;
+		height: 24px;
+		border-radius: 50%;
+		background: rgba(255, 255, 255, 0.18);
+		transition: transform 0.25s ease, background-color 0.25s ease;
+	}
+
+	.ds-btn-pill:hover .ds-btn-arrow {
+		transform: translateX(4px);
+		background: var(--ds-accent);
+	}
+
+	/* Inverse pill (used on dark manifesto card) */
+	.ds-btn-pill-wrap-inverse {
+		background: rgba(255, 255, 255, 0.18);
+	}
+
+	.ds-btn-pill.ds-btn-pill-inverse {
+		background: #ffffff;
+		color: #000000 !important;
+	}
+
+	.ds-btn-pill.ds-btn-pill-inverse .ds-btn-arrow {
+		background: rgba(0, 0, 0, 0.1);
+		color: #000000;
+	}
+
+	.ds-btn-pill.ds-btn-pill-inverse:hover .ds-btn-arrow {
+		background: var(--ds-accent);
+		color: #ffffff;
+	}
+
+	/* Secondary Button */
+	.ds-btn-secondary {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		gap: 8px;
+		background: var(--ds-surface-raised);
+		color: var(--ds-ink);
+		text-decoration: none;
+		font-size: 14.5px;
+		font-weight: 600;
+		padding: 14px 28px;
+		border-radius: var(--ds-radius-pill);
+		box-shadow: var(--ds-ring-white), var(--ds-shadow-raised);
+		border: 1px solid rgba(255, 255, 255, 0.9);
+		transition: transform 0.2s, box-shadow 0.2s;
+	}
+
+	.ds-btn-secondary:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 0 0 10px rgba(255, 255, 255, 0.4), var(--ds-shadow-floating);
+	}
+
+	/* ==========================================================================
+	   CARDS & SURFACES (Raised, Dark)
+	   ========================================================================== */
+	.ds-card-raised {
+		background: var(--ds-surface-raised);
+		border-radius: var(--ds-radius-card);
+		box-shadow: var(--ds-ring-white), var(--ds-shadow-raised);
+		border: 1px solid rgba(255, 255, 255, 0.9);
+		padding: clamp(24px, 3.5vw, 36px);
+		transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+		position: relative;
+	}
+
+	.ds-card-raised:hover {
+		transform: translateY(-4px);
+		box-shadow: 0 0 0 10px rgba(255, 255, 255, 0.42), var(--ds-shadow-floating);
+	}
+
+	/* Tilted spec cards (signature tactile rotation) */
+	.ds-tilt-left {
+		transform: rotate(-1.5deg);
+	}
+
+	.ds-tilt-right {
+		transform: rotate(1.5deg);
+	}
+
+	.ds-tilt-left:hover,
+	.ds-tilt-right:hover {
+		transform: rotate(0deg) translateY(-5px);
+	}
+
+	.ds-card-dark {
+		background: radial-gradient(100% 100% at 0% 0%, #2a2a2a 0%, #101010 100%);
+		color: #ffffff;
+		border-radius: 28px;
+		box-shadow: var(--ds-ring-dark), var(--ds-shadow-dark);
+		border: 1px solid rgba(255, 255, 255, 0.12);
+		padding: clamp(28px, 4vw, 48px);
+		position: relative;
+		overflow: hidden;
+	}
+
+	/* ==========================================================================
+	   HERO SECTION
+	   ========================================================================== */
+	.ds-hero {
+		padding-top: clamp(24px, 4vw, 54px);
+		padding-bottom: clamp(48px, 6vw, 80px);
+		text-align: center;
+	}
+
+	.ds-hero-header {
+		max-width: 900px;
+		margin: 0 auto 36px;
+	}
+
+	.ds-hero-actions {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 14px;
+		margin-top: 30px;
+	}
+
+	.ds-trust-pills {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: center;
+		gap: 16px 24px;
+		margin-top: 10px;
+	}
+
+	.ds-trust-item {
+		display: inline-flex;
+		align-items: center;
+		gap: 6px;
+		font-size: 13px;
+		font-weight: 500;
+		color: var(--ds-text-secondary);
+	}
+
+	.ds-trust-item svg {
+		width: 16px;
+		height: 16px;
+		color: var(--ds-status-green);
+	}
+
+	/* Video Stage (Media Frame) */
+	.ds-video-stage {
+		max-width: 880px;
+		margin: 40px auto 0;
+		position: relative;
+	}
+
+	.ds-video-frame {
+		background: #141414;
+		border-radius: 24px;
+		padding: 12px;
+		box-shadow: 0 0 0 8px rgba(255, 255, 255, 0.32), 0 24px 60px rgba(0, 0, 0, 0.25);
+		border: 1px solid rgba(255, 255, 255, 0.2);
+		position: relative;
+	}
+
+	.ds-video-header {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 6px 14px 10px;
+		color: rgba(255, 255, 255, 0.6);
+		font-size: 12px;
+		font-family: var(--ds-font-mono);
+	}
+
+	.ds-video-quality {
+		display: inline-flex;
+		align-items: center;
+		gap: 5px;
+	}
+
+	.ds-video-dots {
+		display: flex;
+		gap: 6px;
+	}
+
+	.ds-video-dot {
+		width: 10px;
+		height: 10px;
+		border-radius: 50%;
+		background: rgba(255, 255, 255, 0.2);
+	}
+
+	.ds-video-dot:nth-child(1) { background: #ff5f56; }
+	.ds-video-dot:nth-child(2) { background: #ffbd2e; }
+	.ds-video-dot:nth-child(3) { background: #27c93f; }
+
+	.ds-video-container {
+		position: relative;
+		width: 100%;
+		padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+		height: 0;
+		overflow: hidden;
+		border-radius: 16px;
+		background: #000000;
+	}
+
+	.ds-video-container iframe {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		border: 0;
+	}
+
+	/* ==========================================================================
+	   SECTIONS & PROBLEM CARDS
+	   ========================================================================== */
+	.ds-section {
+		padding: clamp(50px, 7vw, 90px) 0;
+		position: relative;
+	}
+
+	.ds-section-tinted {
+		background: rgba(255, 255, 255, 0.45);
+		border-top: 1px solid rgba(0, 0, 0, 0.06);
+		border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+	}
+
+	.ds-section-header {
+		text-align: center;
+		max-width: 780px;
+		margin: 0 auto clamp(36px, 5vw, 56px);
+	}
+
+	.ds-grid-3 {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: clamp(20px, 2.5vw, 32px);
+	}
+
+	.ds-problem-card {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		text-align: left;
+	}
+
+	.ds-badge-num {
+		width: 44px;
+		height: 44px;
+		border-radius: 14px;
+		background: var(--ds-ink);
+		color: #ffffff;
+		display: grid;
+		place-items: center;
+		font-family: var(--ds-font-mono);
+		font-size: 16px;
+		font-weight: 700;
+		margin-bottom: 20px;
+		box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+	}
+
+	.ds-problem-card h3 {
+		font-size: 20px;
+		font-weight: 600;
+		letter-spacing: -0.02em;
+		color: var(--ds-ink);
+		margin-bottom: 12px;
+		line-height: 1.3;
+	}
+
+	.ds-problem-card p {
+		font-size: 15px;
+		color: var(--ds-text-secondary);
+		line-height: 1.6;
+	}
+
+	.ds-card-tag {
+		display: inline-block;
+		font-size: 11.5px;
+		font-family: var(--ds-font-mono);
+		text-transform: uppercase;
+		letter-spacing: 0.06em;
+		padding: 4px 10px;
+		border-radius: 6px;
+		margin-top: 18px;
+		width: fit-content;
+		background: rgba(255, 55, 0, 0.08);
+		color: var(--ds-accent);
+		font-weight: 600;
+	}
+
+	/* ==========================================================================
+	   SOLUTION & FEATURES SECTION
+	   ========================================================================== */
+	.ds-grid-2 {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: clamp(20px, 3vw, 36px);
+	}
+
+	.ds-feature-card {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		height: 100%;
+	}
+
+	.ds-feature-badge-wrap {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		margin-bottom: 22px;
+	}
+
+	.ds-feature-badge {
+		display: inline-flex;
+		align-items: center;
+		gap: 8px;
+		background: rgba(0, 0, 0, 0.05);
+		padding: 6px 14px;
+		border-radius: var(--ds-radius-pill);
+		font-size: 12.5px;
+		font-weight: 600;
+		color: var(--ds-ink);
+	}
+
+	.ds-feature-badge.bonus {
+		background: rgba(255, 55, 0, 0.1);
+		color: var(--ds-accent);
+	}
+
+	.ds-feature-meta {
+		font-size: 12px;
+		font-family: var(--ds-font-mono);
+		color: var(--ds-text-tertiary);
+	}
+
+	.ds-feature-meta.is-bonus {
+		color: var(--ds-accent);
+		font-weight: 600;
+	}
+
+	.ds-feature-media {
+		width: 100%;
+		height: 190px;
+		background: linear-gradient(135deg, #f2f2f2 0%, #e6e6e6 100%);
+		border-radius: 16px;
+		overflow: hidden;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin-bottom: 22px;
+		border: 1px solid rgba(0, 0, 0, 0.04);
+		position: relative;
+	}
+
+	.ds-feature-media img {
+		max-width: 120px;
+		max-height: 120px;
+		object-fit: contain;
+		transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+	}
+
+	/* Preenchimento total do card (cover) */
+	.ds-feature-media.has-cover {
+		background: #0f172a;
+		padding: 0;
+	}
+
+	.ds-feature-media.has-cover img,
+	.ds-feature-media img.is-cover {
+		width: 100%;
+		height: 100%;
+		max-width: 100%;
+		max-height: 100%;
+		object-fit: cover;
+		object-position: center 25%;
+		border-radius: 16px;
+		display: block;
+	}
+
+	.ds-feature-card:hover .ds-feature-media img {
+		transform: scale(1.08);
+	}
+
+	.ds-feature-card:hover .ds-feature-media.has-cover img,
+	.ds-feature-card:hover .ds-feature-media img.is-cover {
+		transform: scale(1.05);
+	}
+
+	.ds-feature-content h3 {
+		font-size: 22px;
+		font-weight: 600;
+		letter-spacing: -0.03em;
+		color: var(--ds-ink);
+		margin-bottom: 10px;
+		line-height: 1.3;
+	}
+
+	.ds-feature-content p {
+		font-size: 15px;
+		color: var(--ds-text-secondary);
+		line-height: 1.6;
+	}
+
+	.ds-feature-bullets {
+		list-style: none;
+		margin-top: 16px;
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+	}
+
+	.ds-feature-bullet {
+		display: flex;
+		align-items: flex-start;
+		gap: 8px;
+		font-size: 13.5px;
+		color: var(--ds-text-secondary);
+	}
+
+	.ds-feature-bullet svg {
+		width: 16px;
+		height: 16px;
+		flex-shrink: 0;
+		color: var(--ds-status-green);
+		margin-top: 2px;
+	}
+
+	/* ==========================================================================
+	   MANIFESTO / PERSPECTIVE BREAK
+	   ========================================================================== */
+	.ds-manifesto {
+		margin: 30px 0;
+	}
+
+	.ds-manifesto-inner {
+		text-align: center;
+		max-width: 860px;
+		margin: 0 auto;
+	}
+
+	.ds-manifesto-inner h2 {
+		font-size: clamp(30px, 4vw, 52px);
+		line-height: 1.15;
+		font-weight: 500;
+		letter-spacing: -0.04em;
+		color: #ffffff;
+		margin-bottom: 20px;
+	}
+
+	.ds-manifesto-inner h2 strong {
+		color: #ffffff;
+	}
+
+	.ds-manifesto-inner p {
+		font-size: clamp(16px, 1.6vw, 20px);
+		color: rgba(255, 255, 255, 0.7);
+		line-height: 1.5;
+		margin-bottom: 32px;
+	}
+
+	/* ==========================================================================
+	   OFFER SECTION / PRICING STACK (#oferta)
+	   ========================================================================== */
+	.ds-offer-section {
+		padding: clamp(60px, 8vw, 100px) 0;
+	}
+
+	.ds-offer-box {
+		max-width: 840px;
+		margin: 0 auto;
+		background: #ffffff;
+		border-radius: 28px;
+		box-shadow: 0 0 0 10px rgba(255, 255, 255, 0.4), 0 30px 60px -12px rgba(0, 0, 0, 0.14);
+		border: 1px solid rgba(255, 255, 255, 0.95);
+		overflow: hidden;
+		position: relative;
+	}
+
+	.ds-offer-top-ribbon {
+		background: var(--ds-ink);
+		color: #ffffff;
+		padding: 12px 24px;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		font-size: 13px;
+		font-weight: 600;
+		letter-spacing: -0.01em;
+	}
+
+	.ds-ribbon-tag {
+		background: var(--ds-accent);
+		color: #ffffff;
+		padding: 4px 10px;
+		border-radius: var(--ds-radius-pill);
+		font-size: 11px;
+		font-weight: 700;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+	}
+
+	.ds-offer-body {
+		padding: clamp(32px, 5vw, 54px);
+	}
+
+	.ds-offer-headline {
+		text-align: center;
+		margin-bottom: 30px;
+	}
+
+	.ds-offer-headline h3 {
+		font-size: clamp(24px, 3vw, 34px);
+		font-weight: 600;
+		letter-spacing: -0.04em;
+		color: var(--ds-ink);
+		line-height: 1.25;
+		margin-bottom: 10px;
+	}
+
+	.ds-offer-headline p {
+		font-size: 15px;
+		color: var(--ds-text-secondary);
+	}
+
+	/* Deliverables Checklist */
+	.ds-offer-checklist {
+		list-style: none;
+		display: flex;
+		flex-direction: column;
+		gap: 12px;
+		margin: 28px 0 36px;
+		background: #fcfcfc;
+		border-radius: 16px;
+		padding: 22px 24px;
+		border: 1px solid rgba(0, 0, 0, 0.05);
+	}
+
+	.ds-check-item {
+		display: flex;
+		align-items: flex-start;
+		gap: 12px;
+		font-size: 15px;
+		color: var(--ds-text-primary);
+		line-height: 1.45;
+	}
+
+	.ds-check-icon {
+		width: 20px;
+		height: 20px;
+		border-radius: 50%;
+		background: rgba(12, 179, 0, 0.12);
+		color: var(--ds-status-green);
+		display: grid;
+		place-items: center;
+		flex-shrink: 0;
+		margin-top: 1px;
+	}
+
+	.ds-check-icon svg {
+		width: 12px;
+		height: 12px;
+		stroke-width: 3;
+	}
+
+	/* Pricing */
+	.ds-pricing-display {
+		text-align: center;
+		padding: 24px 0 30px;
+		border-top: 1px dashed rgba(0, 0, 0, 0.12);
+		border-bottom: 1px dashed rgba(0, 0, 0, 0.12);
+		margin-bottom: 32px;
+	}
+
+	.ds-price-anchor {
+		font-size: 15px;
+		color: var(--ds-text-tertiary);
+		margin-bottom: 6px;
+	}
+
+	.ds-price-anchor del {
+		text-decoration: line-through;
+		font-weight: 500;
+	}
+
+	.ds-price-installments {
+		font-size: clamp(38px, 5vw, 56px);
+		font-weight: 700;
+		letter-spacing: -0.05em;
+		color: var(--ds-ink);
+		line-height: 1.05;
+		margin: 6px 0;
+	}
+
+	.ds-price-installments span {
+		font-size: clamp(20px, 2.5vw, 28px);
+		font-weight: 500;
+		color: var(--ds-text-secondary);
+	}
+
+	.ds-price-cash {
+		font-size: 16px;
+		font-weight: 600;
+		color: var(--ds-accent);
+	}
+
+	/* Big Offer Button */
+	.ds-offer-cta-wrap {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 12px;
+	}
+
+	.ds-btn-pill-wrap-offer {
+		width: 100%;
+		max-width: 520px;
+		text-align: center;
+	}
+
+	.ds-btn-pill-offer {
+		width: 100%;
+		max-width: 520px;
+		padding: 18px 36px;
+		font-size: clamp(16px, 1.6vw, 18px);
+		background: var(--ds-ink);
+		letter-spacing: -0.01em;
+	}
+
+	.ds-btn-pill-offer:hover {
+		background: #181818;
+	}
+
+	.ds-offer-guarantee-micro {
+		display: flex;
+		align-items: center;
+		gap: 8px;
+		font-size: 12.5px;
+		color: var(--ds-text-secondary);
+	}
+
+	.ds-offer-guarantee-micro svg {
+		width: 16px;
+		height: 16px;
+		flex-shrink: 0;
+		color: var(--ds-status-green);
+	}
+
+	/* ==========================================================================
+	   GUARANTEE SECTION (7 Dias 100% Seguro)
+	   ========================================================================== */
+	.ds-guarantee-section {
+		padding-top: 0;
+	}
+
+	.ds-guarantee-card {
+		max-width: 960px;
+		margin: 0 auto;
+		background: rgba(255, 255, 255, 0.95);
+	}
+
+	.ds-guarantee-grid {
+		display: grid;
+		grid-template-columns: 260px 1fr;
+		align-items: center;
+		gap: clamp(24px, 4vw, 48px);
+	}
+
+	.ds-guarantee-badge-col {
+		text-align: center;
+	}
+
+	.ds-guarantee-seal {
+		max-width: 220px;
+		width: 100%;
+		height: auto;
+		filter: drop-shadow(0 12px 20px rgba(0, 0, 0, 0.1));
+	}
+
+	.ds-guarantee-content h3 {
+		font-size: clamp(24px, 3vw, 36px);
+		font-weight: 600;
+		letter-spacing: -0.04em;
+		color: var(--ds-ink);
+		margin-bottom: 14px;
+	}
+
+	.ds-guarantee-content p {
+		font-size: 16px;
+		color: var(--ds-text-secondary);
+		line-height: 1.65;
+		margin-bottom: 14px;
+	}
+
+	.ds-guarantee-action {
+		margin-top: 20px;
+	}
+
+	/* ==========================================================================
+	   FAQ SECTION (Accordion)
+	   ========================================================================== */
+	.ds-faq-stack {
+		max-width: 820px;
+		margin: 0 auto;
+		display: flex;
+		flex-direction: column;
+		gap: 14px;
+	}
+
+	.ds-faq-item {
+		background: rgba(255, 255, 255, 0.88);
+		backdrop-filter: blur(14px);
+		border-radius: 16px;
+		box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.22), 0 4px 12px rgba(0, 0, 0, 0.04);
+		border: 1px solid rgba(255, 255, 255, 0.9);
+		overflow: hidden;
+		transition: all 0.25s ease;
+	}
+
+	.ds-faq-item.active {
+		box-shadow: 0 0 0 8px rgba(255, 255, 255, 0.35), var(--ds-shadow-raised);
+	}
+
+	.ds-faq-trigger {
+		width: 100%;
+		padding: 20px 24px;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		text-align: left;
+		background: transparent;
+		border: 0;
+		cursor: pointer;
+		font-family: inherit;
+		font-size: 16.5px;
+		font-weight: 600;
+		letter-spacing: -0.02em;
+		color: var(--ds-ink);
+		gap: 16px;
+	}
+
+	.ds-faq-icon {
+		width: 28px;
+		height: 28px;
+		border-radius: 50%;
+		background: rgba(0, 0, 0, 0.05);
+		display: grid;
+		place-items: center;
+		flex-shrink: 0;
+		color: var(--ds-ink);
+		transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+	}
+
+	.ds-faq-item.active .ds-faq-icon {
+		transform: rotate(45deg);
+		background: var(--ds-accent);
+		color: #ffffff;
+	}
+
+	.ds-faq-content {
+		max-height: 0;
+		overflow: hidden;
+		transition: max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1), padding 0.35s ease;
+		padding: 0 24px;
+	}
+
+	.ds-faq-item.active .ds-faq-content {
+		max-height: 300px;
+		padding-bottom: 22px;
+	}
+
+	.ds-faq-content p {
+		font-size: 15px;
+		color: var(--ds-text-secondary);
+		line-height: 1.6;
+	}
+
+	/* ==========================================================================
+	   FOOTER
+	   ========================================================================== */
+	.ds-footer {
+		width: 100%;
+		background: #000000;
+		color: #ffffff;
+		margin-top: 40px;
+		padding: 60px 0 40px;
+		border-top: 8px solid var(--ds-bg);
+		position: relative;
+		overflow: hidden;
+	}
+
+	.ds-footer-rays {
+		position: absolute;
+		inset: 0;
+		pointer-events: none;
+		opacity: 0.05;
+		background: radial-gradient(100% 100% at 50% 0%, #ffffff 0%, transparent 80%);
+	}
+
+	.ds-footer-grid {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		text-align: center;
+		gap: 28px;
+		position: relative;
+		z-index: 2;
+	}
+
+	.ds-footer-brand {
+		font-size: 22px;
+		font-weight: 700;
+		letter-spacing: -0.04em;
+		color: #ffffff;
+		display: flex;
+		align-items: center;
+		gap: 10px;
+	}
+
+	.ds-footer-links {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		gap: 14px 28px;
+		list-style: none;
+	}
+
+	.ds-footer-link {
+		color: rgba(255, 255, 255, 0.6);
+		text-decoration: none;
+		font-size: 13.5px;
+		transition: color 0.2s;
+		cursor: pointer;
+	}
+
+	.ds-footer-link-btn {
+		background: none;
+		border: 0;
+		font-family: inherit;
+	}
+
+	.ds-footer-link:hover {
+		color: #ffffff;
+	}
+
+	.ds-footer-copy {
+		font-size: 12.5px;
+		color: rgba(255, 255, 255, 0.4);
+		max-width: 600px;
+		line-height: 1.6;
+	}
+
+	/* ==========================================================================
+	   MODAL DIALOGS (Termos de Uso e Políticas de Privacidade)
+	   ========================================================================== */
+	.ds-modal-backdrop {
+		position: fixed;
+		inset: 0;
+		background: rgba(0, 0, 0, 0.7);
+		backdrop-filter: blur(8px);
+		-webkit-backdrop-filter: blur(8px);
+		z-index: 100;
+		display: none;
+		place-items: center;
+		padding: 20px;
+	}
+
+	.ds-modal-backdrop.open {
+		display: grid;
+	}
+
+	.ds-modal {
+		background: #ffffff;
+		color: var(--ds-ink);
+		border-radius: 20px;
+		max-width: 640px;
+		width: 100%;
+		max-height: 85vh;
+		overflow-y: auto;
+		padding: 32px;
+		box-shadow: 0 24px 60px rgba(0, 0, 0, 0.3);
+		position: relative;
+	}
+
+	.ds-modal h3 {
+		font-size: 24px;
+		font-weight: 700;
+		margin-bottom: 16px;
+	}
+
+	.ds-modal p {
+		font-size: 14.5px;
+		color: var(--ds-text-secondary);
+		line-height: 1.6;
+		margin-bottom: 14px;
+	}
+
+	.ds-modal-close {
+		position: absolute;
+		top: 18px;
+		right: 18px;
+		background: rgba(0, 0, 0, 0.06);
+		border: 0;
+		border-radius: 50%;
+		width: 32px;
+		height: 32px;
+		font-size: 18px;
+		cursor: pointer;
+		display: grid;
+		place-items: center;
+	}
+
+	/* ==========================================================================
+	   RESPONSIVE DESIGN (Tablets & Mobile)
+	   ========================================================================== */
+	@media (max-width: 1024px) {
+		.ds-grid-3 {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+
+	@media (max-width: 809.98px) {
+		.ds-grid-3,
+		.ds-grid-2 {
+			grid-template-columns: 1fr;
+		}
+
+		.ds-tilt-left,
+		.ds-tilt-right {
+			transform: none !important;
+		}
+
+		.ds-guarantee-grid {
+			grid-template-columns: 1fr;
+			text-align: center;
+		}
+
+		.ds-guarantee-seal {
+			margin: 0 auto;
+		}
+
+		.ds-btn-pill-offer {
+			max-width: 100%;
+		}
+
+		.ds-offer-top-ribbon {
+			flex-direction: column;
+			gap: 8px;
+			text-align: center;
+		}
+	}
+</style>
