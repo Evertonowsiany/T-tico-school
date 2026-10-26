@@ -310,13 +310,26 @@ const year = 2027;
 									</span>
 								</div>
 
-								<div class="ds-video-container">
+								<div class="ds-video-container" id="video-container">
 									<iframe
-										src="https://www.youtube-nocookie.com/embed/16wioWcUfV0?rel=0&modestbranding=1"
+										id="hero-video"
+										src="https://www.youtube-nocookie.com/embed/16wioWcUfV0?rel=0&modestbranding=1&controls=0&disablekb=1&fs=0&iv_load_policy=3&playsinline=1&enablejsapi=1"
 										title="Apresentação do Método Tático School"
 										allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-										referrerpolicy="strict-origin-when-cross-origin"
-										allowfullscreen></iframe>
+										referrerpolicy="strict-origin-when-cross-origin"></iframe>
+
+									<!-- Custom Play/Pause (único controle visível) -->
+									<button type="button" class="ds-video-toggle" id="video-toggle" aria-label="Reproduzir vídeo">
+										<span class="ds-video-toggle-icon" aria-hidden="true">
+											<svg class="ds-icon-play" viewBox="0 0 24 24" fill="currentColor">
+												<path d="M8 5.14v13.72a1 1 0 0 0 1.52.85l10.6-6.86a1 1 0 0 0 0-1.7L9.52 4.29A1 1 0 0 0 8 5.14z"></path>
+											</svg>
+											<svg class="ds-icon-pause" viewBox="0 0 24 24" fill="currentColor">
+												<rect x="6" y="5" width="4" height="14" rx="1"></rect>
+												<rect x="14" y="5" width="4" height="14" rx="1"></rect>
+											</svg>
+										</span>
+									</button>
 								</div>
 							</div>
 						</div>
@@ -795,6 +808,64 @@ const year = 2027;
 					document.getElementById('oferta')?.scrollIntoView({ behavior: 'smooth' });
 				}
 			});
+
+			// YouTube Player — apenas Play/Pause (controles nativos ocultos via controls=0)
+			const videoContainer = document.getElementById('video-container');
+			const videoToggle = document.getElementById('video-toggle');
+			const videoIframe = document.getElementById('hero-video');
+
+			if (videoContainer && videoToggle && videoIframe) {
+				const w = window as any;
+				let player: any = null;
+				let playerReady = false;
+
+				const isPlayingState = (state: number) =>
+					state === w.YT.PlayerState.PLAYING || state === w.YT.PlayerState.BUFFERING;
+
+				const initPlayer = () => {
+					player = new w.YT.Player(videoIframe, {
+						events: {
+							onReady: () => {
+								playerReady = true;
+							},
+							onStateChange: (event: any) => {
+								const playing = isPlayingState(event.data);
+								videoContainer.classList.toggle('is-playing', playing);
+								videoToggle.setAttribute('aria-label', playing ? 'Pausar vídeo' : 'Reproduzir vídeo');
+
+								// Ao terminar, volta ao início pausado (evita a tela de vídeos sugeridos)
+								if (event.data === w.YT.PlayerState.ENDED) {
+									player.seekTo(0, true);
+									player.pauseVideo();
+								}
+							},
+						},
+					});
+				};
+
+				if (w.YT?.Player) {
+					initPlayer();
+				} else {
+					const previousReady = w.onYouTubeIframeAPIReady;
+					w.onYouTubeIframeAPIReady = () => {
+						previousReady?.();
+						initPlayer();
+					};
+					const ytScript = document.createElement('script');
+					ytScript.src = 'https://www.youtube.com/iframe_api';
+					ytScript.async = true;
+					document.head.appendChild(ytScript);
+				}
+
+				videoToggle.addEventListener('click', () => {
+					if (!player || !playerReady) return;
+					if (isPlayingState(player.getPlayerState())) {
+						player.pauseVideo();
+					} else {
+						player.playVideo();
+					}
+				});
+			}
 		</script>
 	</body>
 </html>
@@ -1396,6 +1467,75 @@ const year = 2027;
 		width: 100%;
 		height: 100%;
 		border: 0;
+	}
+
+	/* Custom Play/Pause overlay — cobre o iframe e bloqueia cliques nos links do YouTube */
+	.ds-video-toggle {
+		position: absolute;
+		inset: 0;
+		width: 100%;
+		height: 100%;
+		z-index: 2;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0;
+		border: 0;
+		background: transparent;
+		cursor: pointer;
+		-webkit-tap-highlight-color: transparent;
+	}
+
+	.ds-video-toggle-icon {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 76px;
+		height: 76px;
+		border-radius: 50%;
+		background: rgba(0, 0, 0, 0.72);
+		color: #ffffff;
+		backdrop-filter: blur(6px);
+		-webkit-backdrop-filter: blur(6px);
+		box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.14), 0 10px 28px rgba(0, 0, 0, 0.4);
+		transition: opacity 0.25s ease, transform 0.25s ease;
+	}
+
+	.ds-video-toggle-icon svg {
+		width: 30px;
+		height: 30px;
+	}
+
+	.ds-video-toggle-icon .ds-icon-play {
+		margin-left: 4px; /* centraliza opticamente o triângulo */
+	}
+
+	.ds-video-toggle-icon .ds-icon-pause {
+		display: none;
+	}
+
+	.ds-video-toggle:hover .ds-video-toggle-icon {
+		transform: scale(1.06);
+	}
+
+	.ds-video-container.is-playing .ds-icon-play {
+		display: none;
+	}
+
+	.ds-video-container.is-playing .ds-icon-pause {
+		display: block;
+	}
+
+	/* Durante a reprodução o botão some e só aparece ao passar o mouse / focar */
+	.ds-video-container.is-playing .ds-video-toggle-icon {
+		opacity: 0;
+		transform: scale(0.9);
+	}
+
+	.ds-video-container.is-playing .ds-video-toggle:hover .ds-video-toggle-icon,
+	.ds-video-container.is-playing .ds-video-toggle:focus-visible .ds-video-toggle-icon {
+		opacity: 1;
+		transform: scale(1);
 	}
 
 	/* ==========================================================================
