@@ -1,163 +1,187 @@
 ---
-import { Image } from 'astro:assets';
+import { Image } from "astro:assets";
 
-import featProjeto from '../assets/images/feat-projeto.jpg';
-import featPlanner from '../assets/images/problem-illustration.png';
-import featFinanceiro from '../assets/images/feat-financeiro.jpg';
-import featPatrimonio from '../assets/images/feat-patrimonio.jpg';
-import seloGarantia from '../assets/images/selo-garantia.png';
+import featProjeto from "../assets/images/feat-projeto.jpg";
+import featPlanner from "../assets/images/problem-illustration.png";
+import featFinanceiro from "../assets/images/feat-financeiro.jpg";
+import featPatrimonio from "../assets/images/feat-patrimonio.jpg";
+import seloGarantia from "../assets/images/selo-garantia.png";
 
 // ---------------------------------------------------------------------------
 // SEO
 // ---------------------------------------------------------------------------
-const title = 'Método Tático School | Planilha Inteligente de Produtividade & Metas';
+const title =
+	"Método Tático School | Planilha Inteligente de Produtividade & Metas";
 const description =
-	'Organize sua rotina, alcance seus objetivos e pare de desperdiçar tempo. Conheça a Planilha Inteligente do Método Tático School com Gestão Financeira e Patrimônio inclusos.';
+	"Organize sua rotina, alcance seus objetivos e pare de desperdiçar tempo. Conheça a Planilha Inteligente do Método Tático School com Gestão Financeira e Patrimônio inclusos.";
 
 // Checkout link routing
 // You can set your custom checkout URL here (e.g. Kiwify, Hotmart, Eduzz, etc.)
-const CHECKOUT_URL = '';
+const CHECKOUT_URL = "";
 
 // ---------------------------------------------------------------------------
 // Ícones (Phosphor)
 // ---------------------------------------------------------------------------
 const checkPath =
-	'M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z';
+	"M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z";
 const arrowPath =
-	'M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z';
+	"M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z";
 const folderPath =
-	'M216,72H131.31L104,44.69A15.88,15.88,0,0,0,92.69,40H40A16,16,0,0,0,24,56V200.62A15.41,15.41,0,0,0,39.39,216h177.5A15.13,15.13,0,0,0,232,200.89V88A16,16,0,0,0,216,72ZM40,56H92.69l16,16H40Z';
+	"M216,72H131.31L104,44.69A15.88,15.88,0,0,0,92.69,40H40A16,16,0,0,0,24,56V200.62A15.41,15.41,0,0,0,39.39,216h177.5A15.13,15.13,0,0,0,232,200.89V88A16,16,0,0,0,216,72ZM40,56H92.69l16,16H40Z";
 
 // ---------------------------------------------------------------------------
 // Conteúdo
 // ---------------------------------------------------------------------------
-const trustItems = ['Acesso Imediato', '7 Dias de Garantia 100%', '100% no Google Sheets (Sem mensalidades)'];
+const trustItems = [
+	"Acesso Imediato",
+	"7 Dias de Garantia 100%",
+	"100% no Google Sheets (Sem mensalidades)",
+];
 
 const problems = [
 	{
-		num: '01',
-		title: 'Fazendo várias coisas ao mesmo tempo',
-		text: 'O mito da multitarefa divide seu foco, multiplica erros e gera exaustão sem que nada chegue ao fim. O Método Tático ensina a priorizar a única coisa que realmente move o ponteiro hoje.',
-		tag: 'Foco Direcionado',
-		tilt: 'ds-tilt-left',
+		num: "01",
+		title: "Pare de fazer várias coisas ao mesmo tempo",
+		text: "O mito da multitarefa divide seu foco, multiplica erros e gera exaustão sem que nada chegue ao fim. O Método Tático ensina a priorizar a única coisa que realmente move o ponteiro hoje.",
+		tag: "Foco Direcionado",
+		tilt: "ds-tilt-left",
 	},
 	{
-		num: '02',
-		title: 'Adiando tarefas e metas importantes',
-		text: 'A procrastinação não é preguiça — é falta de clareza do próximo passo. Com objetivos desmembrados em etapas acessíveis, você vence a inércia e executa sem resistência.',
-		tag: 'Fim da Procrastinação',
-		tilt: '',
+		num: "02",
+		title: "Nunca mais adie tarefas e metas importantes",
+		text: "A procrastinação não é preguiça — é falta de clareza do próximo passo. Com objetivos desmembrados em etapas acessíveis, você vence a inércia e executa sem resistência.",
+		tag: "Fim da Procrastinação",
+		tilt: "",
 	},
 	{
-		num: '03',
-		title: 'Dizendo "sim" para tudo e todos',
-		text: 'Quem não tem um planejamento visível vira refém da agenda alheia. Assuma o leme da sua rotina, aprenda a blindar suas horas produtivas e preserve sua energia para suas conquistas.',
-		tag: 'Domínio da Agenda',
-		tilt: 'ds-tilt-right',
+		num: "03",
+		title: 'Não diga mais "sim" para tudo e todos',
+		text: "Quem não tem um planejamento visível vira refém da agenda alheia. Assuma o leme da sua rotina, aprenda a blindar suas horas produtivas e preserve sua energia para suas conquistas.",
+		tag: "Domínio da Agenda",
+		tilt: "ds-tilt-right",
 	},
 ];
 
 const features = [
 	{
-		badge: 'Módulo 01',
-		meta: 'Planejamento Macro',
+		meta: "Planejamento Macro",
 		bonus: false,
 		image: featProjeto,
-		alt: 'Projetos',
-		title: 'Projetos: Detalhando as etapas do seu objetivo',
-		text: 'Aprenda a quebrar metas complexas em passos sequenciais claros. Tenha uma linha do tempo realista para nunca mais ficar perdido no meio do caminho.',
+		alt: "Projetos",
+		title: "Projetos: Detalhando as etapas do seu objetivo",
+		text: "Aprenda a quebrar metas complexas em passos sequenciais claros. Tenha uma linha do tempo realista para nunca mais ficar perdido no meio do caminho.",
 		bullets: [
-			'Estrutura de fases e marcos com prazos tangíveis',
-			'Controle visual de status: A Fazer, Em Andamento e Concluído',
+			"Estrutura de fases e marcos com prazos tangíveis",
+			"Controle visual de status: A Fazer, Em Andamento e Concluído",
 		],
 	},
 	{
-		badge: 'Módulo 02',
-		meta: 'Execução Diária',
+		meta: "Execução Diária",
 		bonus: false,
 		image: featPlanner,
-		alt: 'Planner GPS',
-		title: 'Planner: O GPS que te levará ao seu destino',
-		text: 'O centro de comando da sua rotina diária. Elimine a ansiedade matinal sabendo com exatidão o que precisa ser feito a cada hora do dia.',
+		alt: "Planner GPS",
+		title: "Planner: O GPS que te levará ao seu destino",
+		text: "O centro de comando da sua rotina diária. Elimine a ansiedade matinal sabendo com exatidão o que precisa ser feito a cada hora do dia.",
 		bullets: [
-			'Painel diário e semanal com visual limpo e sem distrações',
-			'Acesse e edite em qualquer lugar pelo aplicativo Google Sheets',
+			"Painel diário e semanal com visual limpo e sem distrações",
+			"Acesse e edite em qualquer lugar pelo aplicativo Google Sheets",
 		],
 	},
 	{
-		id: 'bonus',
-		badge: 'Bônus Especial 01',
-		meta: '100% Grátis',
+		id: "bonus",
+		badge: "Bônus Especial 01",
+		meta: "100% Grátis",
 		bonus: true,
 		image: featFinanceiro,
-		alt: 'Controle Financeiro',
-		title: 'Gestão Financeira Descomplicada',
-		text: 'Produtividade e tranquilidade financeira caminham lado a lado. Domine suas entradas, saídas, custos fixos e saiba exatamente quanto pode poupar a cada mês.',
+		alt: "Controle Financeiro",
+		title: "Gestão Financeira Descomplicada",
+		text: "Produtividade e tranquilidade financeira caminham lado a lado. Domine suas entradas, saídas, custos fixos e saiba exatamente quanto pode poupar a cada mês.",
 		bullets: [
-			'Categorização simples de despesas e receitas',
-			'Cálculo automatizado do fluxo de caixa sem complicação',
+			"Categorização simples de despesas e receitas",
+			"Cálculo automatizado do fluxo de caixa sem complicação",
 		],
 	},
 	{
-		badge: 'Bônus Especial 02',
-		meta: '100% Grátis',
+		badge: "Bônus Especial 02",
+		meta: "100% Grátis",
 		bonus: true,
 		image: featPatrimonio,
-		alt: 'Evolução Patrimonial',
-		title: 'Controle & Evolução de Patrimônio',
-		text: 'Acompanhe o crescimento dos seus bens, investimentos e reservas ao longo do tempo. Veja seu patrimônio líquido evoluir mês após mês com métricas claras.',
+		alt: "Evolução Patrimonial",
+		title: "Controle & Evolução de Patrimônio",
+		text: "Acompanhe o crescimento dos seus bens, investimentos e reservas ao longo do tempo. Veja seu patrimônio líquido evoluir mês após mês com métricas claras.",
 		bullets: [
-			'Visão consolidada de ativos, contas e investimentos',
-			'Metas financeiras de médio e longo prazo registradas',
+			"Visão consolidada de ativos, contas e investimentos",
+			"Metas financeiras de médio e longo prazo registradas",
 		],
 	},
 ];
 
 const checklist = [
-	{ strong: 'Planilha Tático School Completa', rest: ' (Google Sheets) pronta para duplicar e usar' },
-	{ strong: 'Módulo de Projetos Táticos', rest: ' para detalhar etapas e prazos de qualquer meta' },
-	{ strong: 'Módulo Planner Tático (GPS)', rest: ' para organização das suas tarefas diárias e semanais' },
-	{ strong: '[SUPER BÔNUS 1] Planilha de Controle Financeiro Pessoal', rest: ' completa' },
-	{ strong: '[SUPER BÔNUS 2] Painel de Controle e Evolução de Patrimônio', rest: '' },
-	{ strong: 'Aulas didáticas de implementação', rest: ' ensinando como utilizar cada ferramenta' },
-	{ strong: 'Suporte individual dedicado:', rest: ' Via e-mail' },
-	{ strong: 'Acesso vitalício à sua cópia:', rest: ' Sem mensalidades, sem custos extras' },
+	{
+		strong: "Planilha Tático School Completa",
+		rest: " (Google Sheets) pronta para duplicar e usar",
+	},
+	{
+		strong: "Módulo de Projetos Táticos",
+		rest: " para detalhar etapas e prazos de qualquer meta",
+	},
+	{
+		strong: "Módulo Planner Tático (GPS)",
+		rest: " para organização das suas tarefas diárias e semanais",
+	},
+	{
+		strong: "[SUPER BÔNUS 1] Planilha de Controle Financeiro Pessoal",
+		rest: " completa",
+	},
+	{
+		strong: "[SUPER BÔNUS 2] Painel de Controle e Evolução de Patrimônio",
+		rest: "",
+	},
+	{
+		strong: "Aulas didáticas de implementação",
+		rest: " ensinando como utilizar cada ferramenta",
+	},
+	{ strong: "Suporte individual dedicado:", rest: " Via e-mail" },
+	{
+		strong: "Acesso vitalício à sua cópia:",
+		rest: " Sem mensalidades, sem custos extras",
+	},
 ];
 
 const faqs = [
 	{
-		q: 'Como funciona o suporte?',
-		a: 'Nos primeiros 07 dias você tem o suporte pelo e-mail, depois você também terá suporte via WhatsApp direto para tirar dúvidas sobre o uso e aplicação da planilha.',
+		q: "Como funciona o suporte?",
+		a: "Nos primeiros 07 dias você tem o suporte pelo e-mail, depois você também terá suporte via WhatsApp direto para tirar dúvidas sobre o uso e aplicação da planilha.",
 	},
 	{
-		q: 'Preciso investir para aplicar as técnicas desse método?',
-		a: 'Você não vai precisar investir nada além do valor promocional de acesso. Não há mensalidades nem compra de softwares pagos. Apenas com as ferramentas gratuitas fornecidas (como o Google Sheets) você já se tornará mais produtivo.',
+		q: "Preciso investir para aplicar as técnicas desse método?",
+		a: "Você não vai precisar investir nada além do valor promocional de acesso. Não há mensalidades nem compra de softwares pagos. Apenas com as ferramentas gratuitas fornecidas (como o Google Sheets) você já se tornará mais produtivo.",
 	},
 	{
-		q: 'O acesso é vitalício?',
-		a: 'A cópia que você cria para si é sua para sempre!',
+		q: "O acesso é vitalício?",
+		a: "A cópia que você cria para si é sua para sempre!",
 	},
 	{
-		q: 'Consigo acompanhar meu planner no celular?',
-		a: 'Sim! Você pode checar, preencher e atualizar seu planner a qualquer hora diretamente no aplicativo Google Planilhas do seu celular (iOS ou Android), sincronizado em tempo real com o computador.',
+		q: "Consigo acompanhar meu planner no celular?",
+		a: "Sim! Você pode checar, preencher e atualizar seu planner a qualquer hora diretamente no aplicativo Google Planilhas do seu celular (iOS ou Android), sincronizado em tempo real com o computador.",
 	},
 	{
-		q: 'Em que formato é o planner?',
-		a: 'O planner é em formato de Planilha do Google (Google Sheets). Você recebe o acesso por e-mail e com um único clique gera a sua cópia pessoal na nuvem, pronta para uso.',
+		q: "Em que formato é o planner?",
+		a: "O planner é em formato de Planilha do Google (Google Sheets). Você recebe o acesso por e-mail e com um único clique gera a sua cópia pessoal na nuvem, pronta para uso.",
 	},
 	{
-		q: 'Para quem é o planner?',
-		a: 'Para qualquer pessoa que precisa organizar suas tarefas, projetos e objetivos de maneira clara, visual e detalhada — seja você um profissional autônomo, estudante, empreendedor ou alguém buscando mais foco no dia a dia.',
+		q: "Para quem é o planner?",
+		a: "Para qualquer pessoa que precisa organizar suas tarefas, projetos e objetivos de maneira clara, visual e detalhada — seja você um profissional autônomo, estudante, empreendedor ou alguém buscando mais foco no dia a dia.",
 	},
 ];
 
 const footerLinks = [
-	{ href: '#hero', label: 'Início' },
-	{ href: '#metodo', label: 'O Método' },
-	{ href: '#solucao', label: 'O Que Inclui' },
-	{ href: '#oferta', label: 'Garantir Vaga' },
-	{ href: '#garantia', label: 'Garantia 7 Dias' },
-	{ href: '#faq', label: 'FAQ' },
+	{ href: "#hero", label: "Início" },
+	{ href: "#metodo", label: "O Método" },
+	{ href: "#solucao", label: "O Que Inclui" },
+	{ href: "#oferta", label: "Garantir Vaga" },
+	{ href: "#garantia", label: "Garantia 7 Dias" },
+	{ href: "#faq", label: "FAQ" },
 ];
 
 const year = 2027;
@@ -167,7 +191,10 @@ const year = 2027;
 <html lang="pt-BR">
 	<head>
 		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+		/>
 		<title>{title}</title>
 		<meta name="description" content={description} />
 		<meta name="robots" content="max-image-preview:large" />
@@ -194,21 +221,28 @@ const year = 2027;
 			!(function (f, b, e, v, n, t, s) {
 				if (f.fbq) return;
 				n = f.fbq = function () {
-					n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
+					n.callMethod
+						? n.callMethod.apply(n, arguments)
+						: n.queue.push(arguments);
 				};
 				if (!f._fbq) f._fbq = n;
 				n.push = n;
 				n.loaded = !0;
-				n.version = '2.0';
+				n.version = "2.0";
 				n.queue = [];
 				t = b.createElement(e);
 				t.async = !0;
 				t.src = v;
 				s = b.getElementsByTagName(e)[0];
 				s.parentNode.insertBefore(t, s);
-			})(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
-			fbq('init', '755309876572693');
-			fbq('track', 'PageView');
+			})(
+				window,
+				document,
+				"script",
+				"https://connect.facebook.net/en_US/fbevents.js",
+			);
+			fbq("init", "755309876572693");
+			fbq("track", "PageView");
 		</script>
 		<noscript>
 			<img
@@ -222,14 +256,18 @@ const year = 2027;
 		<!-- End Meta Pixel Code -->
 
 		<!-- Google tag (gtag.js) -->
-		<script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-08RLCD95HF"></script>
+		<script
+			is:inline
+			async
+			src="https://www.googletagmanager.com/gtag/js?id=G-08RLCD95HF"
+		></script>
 		<script is:inline>
 			window.dataLayer = window.dataLayer || [];
 			function gtag() {
 				dataLayer.push(arguments);
 			}
-			gtag('js', new Date());
-			gtag('config', 'G-08RLCD95HF');
+			gtag("js", new Date());
+			gtag("config", "G-08RLCD95HF");
 		</script>
 		<!-- End Google tag -->
 
@@ -243,10 +281,10 @@ const year = 2027;
 					};
 				t = l.createElement(r);
 				t.async = 1;
-				t.src = 'https://www.clarity.ms/tag/' + i;
+				t.src = "https://www.clarity.ms/tag/" + i;
 				y = l.getElementsByTagName(r)[0];
 				y.parentNode.insertBefore(t, y);
-			})(window, document, 'clarity', 'script', 'uufogsuwyj');
+			})(window, document, "clarity", "script", "uufogsuwyj");
 		</script>
 		<!-- End Clarity -->
 	</head>
@@ -265,8 +303,9 @@ const year = 2027;
 			<aside class="ds-topbar" aria-label="Aviso de promoção">
 				<span class="ds-topbar-tag">Condição {year}</span>
 				<span>
-					Acesso completo ao <strong>Método Tático School + 2 Bônus</strong> por apenas
-					<strong>12x de R$ 3,08</strong> ou R$ 37,00 à vista!
+					Acesso completo ao <strong
+						>Método Tático School + 2 Bônus</strong
+					> por apenas <strong>R$ 37</strong>!
 				</span>
 			</aside>
 
@@ -278,19 +317,29 @@ const year = 2027;
 					<div class="ds-container">
 						<div class="ds-hero-header">
 							<div class="ds-eyebrow">
-								<span class="ds-eyebrow-line" aria-hidden="true"></span>
+								<span class="ds-eyebrow-line" aria-hidden="true"
+								></span>
 								<em>Produtividade &amp; Organização Tática</em>
-								<span class="ds-eyebrow-line reverse" aria-hidden="true"></span>
+								<span
+									class="ds-eyebrow-line reverse"
+									aria-hidden="true"></span>
 							</div>
 
 							<h1 class="ds-heading-display">
-								Identificar seus objetivos é o caminho <span class="tone-secondary">mais rápido para o sucesso.</span>
+								Identificar seus objetivos é o caminho <span
+									class="tone-secondary"
+									>mais rápido para o sucesso.</span
+								>
 							</h1>
 
 							<p class="ds-lead">
-								Pare de perder dias inteiros com tarefas dispersas. Conheça a <strong>Planilha Inteligente do Método Tático</strong>:
-								um sistema prático no Google Sheets que transforma o caos da rotina em foco, clareza e execução diária — acessível
-								no celular e no computador.
+								Pare de perder dias inteiros com tarefas
+								dispersas. Conheça a <strong
+									>Planilha Inteligente do Método Tático</strong
+								>: um sistema prático no Google Sheets que
+								transforma o caos da rotina em foco, clareza e
+								execução diária — acessível no celular e no
+								computador.
 							</p>
 						</div>
 
@@ -298,35 +347,72 @@ const year = 2027;
 						<div class="ds-video-stage">
 							<div class="ds-video-frame">
 								<div class="ds-video-header">
-									<div class="ds-video-dots" aria-hidden="true">
+									<div
+										class="ds-video-dots"
+										aria-hidden="true"
+									>
 										<span class="ds-video-dot"></span>
 										<span class="ds-video-dot"></span>
 										<span class="ds-video-dot"></span>
 									</div>
 									<span>AULA EXPLICATIVA DO MÉTODO</span>
 									<span class="ds-video-quality">
-										<span class="ds-pulse-dot ds-pulse-dot-sm"></span>
+										<span
+											class="ds-pulse-dot ds-pulse-dot-sm"
+										></span>
 										HD 1080p
 									</span>
 								</div>
 
-								<div class="ds-video-container" id="video-container">
+								<div
+									class="ds-video-container"
+									id="video-container"
+								>
 									<iframe
 										id="hero-video"
 										src="https://www.youtube-nocookie.com/embed/16wioWcUfV0?rel=0&modestbranding=1&controls=0&disablekb=1&fs=0&iv_load_policy=3&playsinline=1&enablejsapi=1"
 										title="Apresentação do Método Tático School"
 										allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-										referrerpolicy="strict-origin-when-cross-origin"></iframe>
+										referrerpolicy="strict-origin-when-cross-origin"
+									></iframe>
 
 									<!-- Custom Play/Pause (único controle visível) -->
-									<button type="button" class="ds-video-toggle" id="video-toggle" aria-label="Reproduzir vídeo">
-										<span class="ds-video-toggle-icon" aria-hidden="true">
-											<svg class="ds-icon-play" viewBox="0 0 24 24" fill="currentColor">
-												<path d="M8 5.14v13.72a1 1 0 0 0 1.52.85l10.6-6.86a1 1 0 0 0 0-1.7L9.52 4.29A1 1 0 0 0 8 5.14z"></path>
+									<button
+										type="button"
+										class="ds-video-toggle"
+										id="video-toggle"
+										aria-label="Reproduzir vídeo"
+									>
+										<span
+											class="ds-video-toggle-icon"
+											aria-hidden="true"
+										>
+											<svg
+												class="ds-icon-play"
+												viewBox="0 0 24 24"
+												fill="currentColor"
+											>
+												<path
+													d="M8 5.14v13.72a1 1 0 0 0 1.52.85l10.6-6.86a1 1 0 0 0 0-1.7L9.52 4.29A1 1 0 0 0 8 5.14z"
+												></path>
 											</svg>
-											<svg class="ds-icon-pause" viewBox="0 0 24 24" fill="currentColor">
-												<rect x="6" y="5" width="4" height="14" rx="1"></rect>
-												<rect x="14" y="5" width="4" height="14" rx="1"></rect>
+											<svg
+												class="ds-icon-pause"
+												viewBox="0 0 24 24"
+												fill="currentColor"
+											>
+												<rect
+													x="6"
+													y="5"
+													width="4"
+													height="14"
+													rx="1"></rect>
+												<rect
+													x="14"
+													y="5"
+													width="4"
+													height="14"
+													rx="1"></rect>
 											</svg>
 										</span>
 									</button>
@@ -337,10 +423,23 @@ const year = 2027;
 						<!-- CTA & Trust Pillars -->
 						<div class="ds-hero-actions">
 							<div class="ds-btn-pill-wrap ds-btn-pill-wrap-pink">
-								<a href="#oferta" class="ds-btn-pill ds-btn-pill-pink" id="hero-cta">
+								<a
+									href="#oferta"
+									class="ds-btn-pill ds-btn-pill-pink"
+									id="hero-cta"
+								>
 									<span>QUERO DAR O PRIMEIRO PASSO</span>
-									<span class="ds-btn-arrow" aria-hidden="true">
-										<svg width="14" height="14" viewBox="0 0 256 256" fill="currentColor"><path d={arrowPath}></path></svg>
+									<span
+										class="ds-btn-arrow"
+										aria-hidden="true"
+									>
+										<svg
+											width="14"
+											height="14"
+											viewBox="0 0 256 256"
+											fill="currentColor"
+											><path d={arrowPath}></path></svg
+										>
 									</span>
 								</a>
 							</div>
@@ -349,7 +448,10 @@ const year = 2027;
 								{
 									trustItems.map((item) => (
 										<span class="ds-trust-item">
-											<svg viewBox="0 0 256 256" fill="currentColor">
+											<svg
+												viewBox="0 0 256 256"
+												fill="currentColor"
+											>
 												<path d={checkPath} />
 											</svg>
 											{item}
@@ -368,23 +470,37 @@ const year = 2027;
 					<div class="ds-container">
 						<div class="ds-section-header">
 							<div class="ds-eyebrow">
-								<span class="ds-eyebrow-line" aria-hidden="true"></span>
+								<span class="ds-eyebrow-line" aria-hidden="true"
+								></span>
 								<em>Chega de Sobrecarga e Frustração</em>
-								<span class="ds-eyebrow-line reverse" aria-hidden="true"></span>
+								<span
+									class="ds-eyebrow-line reverse"
+									aria-hidden="true"></span>
 							</div>
-							<h2 class="ds-heading-section">Você não vai mais desperdiçar seu tempo:</h2>
+							<h2 class="ds-heading-section">
+								Você não vai mais desperdiçar seu tempo:
+							</h2>
 							<p class="ds-lead">
-								Três armadilhas silenciosas que roubam horas preciosas da sua semana e impedem você de alcançar o que realmente
-								planejou.
+								Três armadilhas silenciosas que roubam horas
+								preciosas da sua semana e impedem você de
+								alcançar o que realmente planejou.
 							</p>
 						</div>
 
 						<div class="ds-grid-3">
 							{
 								problems.map((p) => (
-									<article class:list={['ds-card-raised', 'ds-problem-card', p.tilt]}>
+									<article
+										class:list={[
+											"ds-card-raised",
+											"ds-problem-card",
+											p.tilt,
+										]}
+									>
 										<div>
-											<div class="ds-badge-num">{p.num}</div>
+											<div class="ds-badge-num">
+												{p.num}
+											</div>
 											<h3>{p.title}</h3>
 											<p>{p.text}</p>
 										</div>
@@ -403,25 +519,51 @@ const year = 2027;
 					<div class="ds-container">
 						<div class="ds-section-header">
 							<div class="ds-eyebrow">
-								<span class="ds-eyebrow-line" aria-hidden="true"></span>
+								<span class="ds-eyebrow-line" aria-hidden="true"
+								></span>
 								<em>O Ecossistema Completo</em>
-								<span class="ds-eyebrow-line reverse" aria-hidden="true"></span>
+								<span
+									class="ds-eyebrow-line reverse"
+									aria-hidden="true"></span>
 							</div>
-							<h2 class="ds-heading-section">O que você vai dominar e receber com esse método</h2>
+							<h2 class="ds-heading-section">
+								O que você vai dominar e receber com esse método
+							</h2>
 							<p class="ds-lead">
-								Uma estrutura pronta, validada e intuitiva no Google Sheets. Você só precisa abrir e seguir o passo a passo para
-								transformar sua produtividade.
+								Uma estrutura pronta, validada e intuitiva no
+								Google Sheets. Você só precisa abrir e seguir o
+								passo a passo para transformar sua
+								produtividade.
 							</p>
 						</div>
 
 						<div class="ds-grid-2">
 							{
 								features.map((f) => (
-									<article class="ds-card-raised ds-feature-card" id={f.id}>
+									<article
+										class="ds-card-raised ds-feature-card"
+										id={f.id}
+									>
 										<div>
 											<div class="ds-feature-badge-wrap">
-												<span class:list={['ds-feature-badge', { bonus: f.bonus }]}>{f.badge}</span>
-												<span class:list={['ds-feature-meta', { 'is-bonus': f.bonus }]}>{f.meta}</span>
+												{f.badge && (
+													<span
+														class:list={[
+															"ds-feature-badge",
+															{ bonus: f.bonus },
+														]}
+													>
+														{f.badge}
+													</span>
+												)}
+												<span
+													class:list={[
+														"ds-feature-meta",
+														{ "is-bonus": f.bonus },
+													]}
+												>
+													{f.meta}
+												</span>
 											</div>
 											<div class="ds-feature-media has-cover">
 												<Image
@@ -439,8 +581,15 @@ const year = 2027;
 												<ul class="ds-feature-bullets">
 													{f.bullets.map((b) => (
 														<li class="ds-feature-bullet">
-															<svg viewBox="0 0 256 256" fill="currentColor">
-																<path d={checkPath} />
+															<svg
+																viewBox="0 0 256 256"
+																fill="currentColor"
+															>
+																<path
+																	d={
+																		checkPath
+																	}
+																/>
 															</svg>
 															{b}
 														</li>
@@ -463,20 +612,45 @@ const year = 2027;
 						<div class="ds-card-dark">
 							<div class="ds-manifesto-inner">
 								<div class="ds-eyebrow ds-eyebrow-dark">
-									<span class="ds-eyebrow-line" aria-hidden="true"></span>
-									<span class="ds-eyebrow-line reverse" aria-hidden="true"></span>
+									<span
+										class="ds-eyebrow-line"
+										aria-hidden="true"></span>
+									<span
+										class="ds-eyebrow-line reverse"
+										aria-hidden="true"></span>
 								</div>
-								<h2>A diferença entre o sucesso e o fracasso está em como você escolhe agir hoje!</h2>
+								<h2>
+									A diferença entre o sucesso e o fracasso
+									está em como você escolhe agir hoje!
+								</h2>
 								<p>
-									Continuar procrastinando e adiando seus sonhos... ou investir menos de R$ 0,11 por dia para ter domínio definitivo
-									sobre sua rotina, suas metas e seu futuro?
+									Continuar procrastinando e adiando seus
+									sonhos... ou investir menos de R$ 0,11 por
+									dia para ter domínio definitivo sobre sua
+									rotina, suas metas e seu futuro?
 								</p>
 
-								<div class="ds-btn-pill-wrap ds-btn-pill-wrap-inverse">
-									<a href="#oferta" class="ds-btn-pill ds-btn-pill-inverse" id="manifesto-cta">
+								<div
+									class="ds-btn-pill-wrap ds-btn-pill-wrap-inverse"
+								>
+									<a
+										href="#oferta"
+										class="ds-btn-pill ds-btn-pill-inverse"
+										id="manifesto-cta"
+									>
 										<span>QUERO MUDAR MEUS RESULTADOS</span>
-										<span class="ds-btn-arrow" aria-hidden="true">
-											<svg width="14" height="14" viewBox="0 0 256 256" fill="currentColor"><path d={arrowPath}></path></svg>
+										<span
+											class="ds-btn-arrow"
+											aria-hidden="true"
+										>
+											<svg
+												width="14"
+												height="14"
+												viewBox="0 0 256 256"
+												fill="currentColor"
+												><path d={arrowPath}
+												></path></svg
+											>
 										</span>
 									</a>
 								</div>
@@ -492,24 +666,43 @@ const year = 2027;
 					<div class="ds-container">
 						<div class="ds-section-header">
 							<div class="ds-eyebrow">
-								<span class="ds-eyebrow-line" aria-hidden="true"></span>
+								<span class="ds-eyebrow-line" aria-hidden="true"
+								></span>
 								<em>Vagas Promocionais Abertas</em>
-								<span class="ds-eyebrow-line reverse" aria-hidden="true"></span>
+								<span
+									class="ds-eyebrow-line reverse"
+									aria-hidden="true"></span>
 							</div>
-							<h2 class="ds-heading-section">Para você ter acesso a esse método, basta garantir sua vaga agora mesmo!</h2>
-							<p class="ds-lead">Acesso instantâneo a todo o material atualizado {year}.</p>
+							<h2 class="ds-heading-section">
+								Para você ter acesso a esse método, basta
+								garantir sua vaga agora mesmo!
+							</h2>
+							<p class="ds-lead">
+								Acesso instantâneo a todo o material atualizado {
+									year
+								}.
+							</p>
 						</div>
 
 						<div class="ds-offer-box">
 							<div class="ds-offer-top-ribbon">
-								<span>⚡ ACESSO COMPLETO ATUALIZADO PARA {year}.</span>
-								<span class="ds-ribbon-tag">OFERTA POR TEMPO LIMITADO</span>
+								<span
+									>⚡ ACESSO COMPLETO ATUALIZADO PARA VERSÃO {
+										year
+									}.</span
+								>
+								<span class="ds-ribbon-tag"
+									>OFERTA POR TEMPO LIMITADO</span
+								>
 							</div>
 
 							<div class="ds-offer-body">
 								<div class="ds-offer-headline">
 									<h3>Método Tático School</h3>
-									<p>O pacote definitivo de produtividade, organização de metas e gestão pessoal.</p>
+									<p>
+										O pacote definitivo de produtividade,
+										organização de metas e gestão pessoal.
+									</p>
 								</div>
 
 								<ul class="ds-offer-checklist">
@@ -517,12 +710,18 @@ const year = 2027;
 										checklist.map((item) => (
 											<li class="ds-check-item">
 												<span class="ds-check-icon">
-													<svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+													<svg
+														viewBox="0 0 24 24"
+														fill="none"
+														stroke="currentColor"
+													>
 														<polyline points="20 6 9 17 4 12" />
 													</svg>
 												</span>
 												<span>
-													<strong>{item.strong}</strong>
+													<strong>
+														{item.strong}
+													</strong>
 													{item.rest}
 												</span>
 											</li>
@@ -531,24 +730,54 @@ const year = 2027;
 								</ul>
 
 								<div class="ds-pricing-display">
-									<div class="ds-price-anchor">Por apenas:</div>
-									<div class="ds-price-installments">12x <span>R$</span> 3,08</div>
-									<div class="ds-price-cash">ou R$ 37,00 à vista</div>
+									<div class="ds-price-anchor">
+										Por apenas:
+									</div>
+									<div class="ds-price-installments">
+										<span>R$</span> 37
+									</div>
 								</div>
 
 								<div class="ds-offer-cta-wrap">
-									<div class="ds-btn-pill-wrap ds-btn-pill-wrap-offer">
-										<button type="button" class="ds-btn-pill ds-btn-pill-offer" id="btn-checkout" data-checkout-url={CHECKOUT_URL}>
-											<span>QUERO DAR O PRIMEIRO PASSO</span>
-											<span class="ds-btn-arrow" aria-hidden="true">
-												<svg width="16" height="16" viewBox="0 0 256 256" fill="currentColor"><path d={arrowPath}></path></svg>
+									<div
+										class="ds-btn-pill-wrap ds-btn-pill-wrap-offer"
+									>
+										<button
+											type="button"
+											class="ds-btn-pill ds-btn-pill-offer"
+											id="btn-checkout"
+											data-checkout-url={CHECKOUT_URL}
+										>
+											<span
+												>QUERO DAR O PRIMEIRO PASSO</span
+											>
+											<span
+												class="ds-btn-arrow"
+												aria-hidden="true"
+											>
+												<svg
+													width="16"
+													height="16"
+													viewBox="0 0 256 256"
+													fill="currentColor"
+													><path d={arrowPath}
+													></path></svg
+												>
 											</span>
 										</button>
 									</div>
 
 									<div class="ds-offer-guarantee-micro">
-										<svg viewBox="0 0 256 256" fill="currentColor"><path d={checkPath}></path></svg>
-										<span>Compra 100% Criptografada • Garantia Incondicional de 7 Dias • Acesso Imediato</span>
+										<svg
+											viewBox="0 0 256 256"
+											fill="currentColor"
+											><path d={checkPath}></path></svg
+										>
+										<span
+											>Compra 100% Criptografada •
+											Garantia Incondicional de 7 Dias •
+											Acesso Imediato</span
+										>
 									</div>
 								</div>
 							</div>
@@ -576,19 +805,34 @@ const year = 2027;
 									<div class="ds-eyebrow ds-eyebrow-tight">
 										<em>Risco Zero Para Você</em>
 									</div>
-									<h3>100% SEGURO — GARANTIA TOTAL DE 7 DIAS</h3>
+									<h3>
+										100% SEGURO — GARANTIA TOTAL DE 7 DIAS
+									</h3>
 									<p>
-										Você ainda vai receber <strong>7 dias grátis</strong> para aprender e aplicar. Caso mesmo depois disso você ainda
-										não se convença de que esse método é capaz de mudar a sua vida e seus resultados, dentro desse período de 7 dias
-										você pode solicitar seu dinheiro de volta que eu devolvo 100%.
+										Você ainda vai receber <strong
+											>7 dias grátis</strong
+										> para aprender e aplicar. Caso mesmo depois
+										disso você ainda não se convença de que esse
+										método é capaz de mudar a sua vida e seus
+										resultados, dentro desse período de 7 dias
+										você pode solicitar seu dinheiro de volta
+										que eu devolvo 100%.
 									</p>
 									<p>
-										Sem perguntas, sem letras miúdas. Então pare de perder mais tempo, garanta agora a sua vaga e dê o primeiro passo
-										para mudar o seu futuro.
+										Sem perguntas, sem letras miúdas. Então
+										pare de perder mais tempo, garanta agora
+										a sua vaga e dê o primeiro passo para
+										mudar o seu futuro.
 									</p>
 									<div class="ds-guarantee-action">
-										<a href="#oferta" class="ds-btn-secondary" id="guarantee-cta">
-											<span>Quero Testar Sem Nenhum Risco</span>
+										<a
+											href="#oferta"
+											class="ds-btn-secondary"
+											id="guarantee-cta"
+										>
+											<span
+												>Quero Testar Sem Nenhum Risco</span
+											>
 											<span aria-hidden="true">→</span>
 										</a>
 									</div>
@@ -605,13 +849,20 @@ const year = 2027;
 					<div class="ds-container">
 						<div class="ds-section-header">
 							<div class="ds-eyebrow">
-								<span class="ds-eyebrow-line" aria-hidden="true"></span>
+								<span class="ds-eyebrow-line" aria-hidden="true"
+								></span>
 								<em>Perguntas Frequentes</em>
-								<span class="ds-eyebrow-line reverse" aria-hidden="true"></span>
+								<span
+									class="ds-eyebrow-line reverse"
+									aria-hidden="true"></span>
 							</div>
-							<h2 class="ds-heading-section">Dúvidas Frequentes</h2>
+							<h2 class="ds-heading-section">
+								Dúvidas Frequentes
+							</h2>
 							<p class="ds-lead">
-								Tudo o que você precisa saber sobre o acesso, compatibilidade e suporte do Método Tático School.
+								Tudo o que você precisa saber sobre o acesso,
+								compatibilidade e suporte do Método Tático
+								School.
 							</p>
 						</div>
 
@@ -627,11 +878,19 @@ const year = 2027;
 											aria-controls={`faq-content-${i + 1}`}
 										>
 											<span>{faq.q}</span>
-											<span class="ds-faq-icon" aria-hidden="true">
+											<span
+												class="ds-faq-icon"
+												aria-hidden="true"
+											>
 												+
 											</span>
 										</button>
-										<div class="ds-faq-content" id={`faq-content-${i + 1}`} role="region" aria-labelledby={`faq-trigger-${i + 1}`}>
+										<div
+											class="ds-faq-content"
+											id={`faq-content-${i + 1}`}
+											role="region"
+											aria-labelledby={`faq-trigger-${i + 1}`}
+										>
 											<p>{faq.a}</p>
 										</div>
 									</div>
@@ -651,7 +910,9 @@ const year = 2027;
 					<div class="ds-footer-grid">
 						<div class="ds-footer-brand">
 							<div class="ds-brand-logo ds-brand-logo-inverse">
-								<svg viewBox="0 0 256 256"><path d={folderPath}></path></svg>
+								<svg viewBox="0 0 256 256"
+									><path d={folderPath}></path></svg
+								>
 							</div>
 							<span>Tático School</span>
 						</div>
@@ -660,14 +921,22 @@ const year = 2027;
 							{
 								footerLinks.map((link) => (
 									<li>
-										<a href={link.href} class="ds-footer-link">
+										<a
+											href={link.href}
+											class="ds-footer-link"
+										>
 											{link.label}
 										</a>
 									</li>
 								))
 							}
 							<li>
-								<button type="button" class="ds-footer-link ds-footer-link-btn" id="open-termos" data-open-modal="modal-termos">
+								<button
+									type="button"
+									class="ds-footer-link ds-footer-link-btn"
+									id="open-termos"
+									data-open-modal="modal-termos"
+								>
 									Termos de Uso
 								</button>
 							</li>
@@ -684,9 +953,11 @@ const year = 2027;
 						</ul>
 
 						<p class="ds-footer-copy">
-							© {year} Tático School. Todos os direitos reservados.<br />
-							Este site e seu conteúdo não são afiliados ao Google, Meta ou Facebook. Os resultados podem variar de acordo com o
-							comprometimento e aplicação individual de cada aluno.
+							© {year} Tático School. Todos os direitos reservados.<br
+							/>
+							Este site e seu conteúdo não são afiliados ao Google,
+							Meta ou Facebook. Os resultados podem variar de acordo
+							com o comprometimento e aplicação individual de cada aluno.
 						</p>
 					</div>
 				</div>
@@ -694,27 +965,47 @@ const year = 2027;
 		</div>
 
 		<!-- Modal: Termos de Uso -->
-		<div class="ds-modal-backdrop" id="modal-termos" role="dialog" aria-modal="true" aria-labelledby="modal-termos-title">
+		<div
+			class="ds-modal-backdrop"
+			id="modal-termos"
+			role="dialog"
+			aria-modal="true"
+			aria-labelledby="modal-termos-title"
+		>
 			<div class="ds-modal">
-				<button type="button" class="ds-modal-close" data-close-modal="modal-termos" aria-label="Fechar">✕</button>
+				<button
+					type="button"
+					class="ds-modal-close"
+					data-close-modal="modal-termos"
+					aria-label="Fechar">✕</button
+				>
 				<h3 id="modal-termos-title">Termos de Uso</h3>
 				<p>
-					Bem-vindo ao <strong>Tático School</strong>. Ao adquirir ou utilizar este produto, você concorda com os seguintes termos e
-					condições:
+					Bem-vindo ao <strong>Tático School</strong>. Ao adquirir ou
+					utilizar este produto, você concorda com os seguintes termos
+					e condições:
 				</p>
 				<p>
-					1. <strong>Uso Pessoal:</strong> O material, planilhas e vídeos são licenciados para uso estritamente individual. É proibida
-					a redistribuição, revenda, compartilhamento público de links de acesso ou reprodução total ou parcial sem autorização prévia
-					por escrito.
-				</p>
-				<p>2. <strong>Acesso e Atualizações:</strong> O comprador tem acesso à sua cópia da planilha atualizada {year}.</p>
-				<p>
-					3. <strong>Garantia de 7 Dias:</strong> Em cumprimento ao Código de Defesa do Consumidor, você dispõe de 7 dias a partir da
-					aprovação da compra para solicitar o cancelamento e reembolso integral caso não fique satisfeito.
+					1. <strong>Uso Pessoal:</strong> O material, planilhas e vídeos
+					são licenciados para uso estritamente individual. É proibida a
+					redistribuição, revenda, compartilhamento público de links de
+					acesso ou reprodução total ou parcial sem autorização prévia por
+					escrito.
 				</p>
 				<p>
-					4. <strong>Resultados:</strong> Os métodos e ferramentas são fornecidos como suporte de organização. Os resultados práticos
-					dependem do engajamento e execução consistente por parte do usuário.
+					2. <strong>Acesso e Atualizações:</strong> O comprador tem acesso
+					à sua cópia da planilha atualizada {year}.
+				</p>
+				<p>
+					3. <strong>Garantia de 7 Dias:</strong> Em cumprimento ao Código
+					de Defesa do Consumidor, você dispõe de 7 dias a partir da aprovação
+					da compra para solicitar o cancelamento e reembolso integral caso
+					não fique satisfeito.
+				</p>
+				<p>
+					4. <strong>Resultados:</strong> Os métodos e ferramentas são fornecidos
+					como suporte de organização. Os resultados práticos dependem do
+					engajamento e execução consistente por parte do usuário.
 				</p>
 			</div>
 		</div>
@@ -728,23 +1019,37 @@ const year = 2027;
 			aria-labelledby="modal-privacidade-title"
 		>
 			<div class="ds-modal">
-				<button type="button" class="ds-modal-close" data-close-modal="modal-privacidade" aria-label="Fechar">✕</button>
+				<button
+					type="button"
+					class="ds-modal-close"
+					data-close-modal="modal-privacidade"
+					aria-label="Fechar">✕</button
+				>
 				<h3 id="modal-privacidade-title">Políticas de Privacidade</h3>
-				<p>A sua privacidade é de suma importância para nós no <strong>Tático School</strong>.</p>
 				<p>
-					1. <strong>Coleta de Dados:</strong> Coletamos apenas os dados essenciais para o processamento do seu pedido e envio do acesso
+					A sua privacidade é de suma importância para nós no <strong
+						>Tático School</strong
+					>.
+				</p>
+				<p>
+					1. <strong>Coleta de Dados:</strong> Coletamos apenas os dados
+					essenciais para o processamento do seu pedido e envio do acesso
 					ao produto (como nome e e-mail no ato do checkout).
 				</p>
 				<p>
-					2. <strong>Uso dos Dados:</strong> Seus dados não serão vendidos, alugados ou compartilhados com terceiros, exceto com as
-					plataformas de pagamento seguras e processamento necessárias para liberação da compra.
+					2. <strong>Uso dos Dados:</strong> Seus dados não serão vendidos,
+					alugados ou compartilhados com terceiros, exceto com as plataformas
+					de pagamento seguras e processamento necessárias para liberação
+					da compra.
 				</p>
 				<p>
-					3. <strong>Segurança:</strong> Todas as transações financeiras são criptografadas com certificado SSL padrão bancário.
+					3. <strong>Segurança:</strong> Todas as transações financeiras
+					são criptografadas com certificado SSL padrão bancário.
 				</p>
 				<p>
-					4. <strong>Cookies e Rastreamento:</strong> Utilizamos pixels de conversão anônimos (Google Analytics, Meta Pixel)
-					estritamente para medição de tráfego e melhoria da experiência de navegação.
+					4. <strong>Cookies e Rastreamento:</strong> Utilizamos pixels
+					de conversão anônimos (Google Analytics, Meta Pixel) estritamente
+					para medição de tráfego e melhoria da experiência de navegação.
 				</p>
 			</div>
 		</div>
@@ -752,89 +1057,152 @@ const year = 2027;
 		<!-- Interactive JavaScript -->
 		<script>
 			// FAQ Accordion Toggle
-			const faqItems = document.querySelectorAll<HTMLElement>('.ds-faq-item');
+			const faqItems =
+				document.querySelectorAll<HTMLElement>(".ds-faq-item");
 
 			faqItems.forEach((item) => {
-				const trigger = item.querySelector<HTMLButtonElement>('.ds-faq-trigger');
-				trigger?.addEventListener('click', () => {
-					const isActive = item.classList.contains('active');
+				const trigger =
+					item.querySelector<HTMLButtonElement>(".ds-faq-trigger");
+				trigger?.addEventListener("click", () => {
+					const isActive = item.classList.contains("active");
 
 					// Close all other items
 					faqItems.forEach((el) => {
-						el.classList.remove('active');
-						el.querySelector('.ds-faq-trigger')?.setAttribute('aria-expanded', 'false');
+						el.classList.remove("active");
+						el.querySelector(".ds-faq-trigger")?.setAttribute(
+							"aria-expanded",
+							"false",
+						);
 					});
 
 					// Toggle current
 					if (!isActive) {
-						item.classList.add('active');
-						trigger.setAttribute('aria-expanded', 'true');
+						item.classList.add("active");
+						trigger.setAttribute("aria-expanded", "true");
 					}
 				});
 			});
 
 			// Modal Handlers
-			const openModal = (id: string) => document.getElementById(id)?.classList.add('open');
-			const closeModal = (id: string) => document.getElementById(id)?.classList.remove('open');
+			const openModal = (id: string) =>
+				document.getElementById(id)?.classList.add("open");
+			const closeModal = (id: string) =>
+				document.getElementById(id)?.classList.remove("open");
 
-			document.querySelectorAll<HTMLElement>('[data-open-modal]').forEach((btn) => {
-				btn.addEventListener('click', () => openModal(btn.dataset.openModal!));
-			});
-
-			document.querySelectorAll<HTMLElement>('[data-close-modal]').forEach((btn) => {
-				btn.addEventListener('click', () => closeModal(btn.dataset.closeModal!));
-			});
-
-			document.querySelectorAll<HTMLElement>('.ds-modal-backdrop').forEach((backdrop) => {
-				backdrop.addEventListener('click', (event) => {
-					if (event.target === backdrop) closeModal(backdrop.id);
+			document
+				.querySelectorAll<HTMLElement>("[data-open-modal]")
+				.forEach((btn) => {
+					btn.addEventListener("click", () =>
+						openModal(btn.dataset.openModal!),
+					);
 				});
-			});
 
-			document.addEventListener('keydown', (event) => {
-				if (event.key === 'Escape') {
-					document.querySelectorAll('.ds-modal-backdrop.open').forEach((m) => m.classList.remove('open'));
+			document
+				.querySelectorAll<HTMLElement>("[data-close-modal]")
+				.forEach((btn) => {
+					btn.addEventListener("click", () =>
+						closeModal(btn.dataset.closeModal!),
+					);
+				});
+
+			document
+				.querySelectorAll<HTMLElement>(".ds-modal-backdrop")
+				.forEach((backdrop) => {
+					backdrop.addEventListener("click", (event) => {
+						if (event.target === backdrop) closeModal(backdrop.id);
+					});
+				});
+
+			document.addEventListener("keydown", (event) => {
+				if (event.key === "Escape") {
+					document
+						.querySelectorAll(".ds-modal-backdrop.open")
+						.forEach((m) => m.classList.remove("open"));
 				}
 			});
 
 			// Checkout link routing (URL definida no frontmatter: CHECKOUT_URL)
-			const checkoutBtn = document.getElementById('btn-checkout');
-			checkoutBtn?.addEventListener('click', () => {
+			const checkoutBtn = document.getElementById("btn-checkout");
+			checkoutBtn?.addEventListener("click", () => {
 				const url = checkoutBtn.dataset.checkoutUrl?.trim();
 				if (url) {
-					window.open(url, '_blank');
+					window.open(url, "_blank");
 				} else {
 					// Smooth scroll to offer section if no checkout URL configured yet
-					document.getElementById('oferta')?.scrollIntoView({ behavior: 'smooth' });
+					document
+						.getElementById("oferta")
+						?.scrollIntoView({ behavior: "smooth" });
 				}
 			});
 
 			// YouTube Player — apenas Play/Pause (controles nativos ocultos via controls=0)
-			const videoContainer = document.getElementById('video-container');
-			const videoToggle = document.getElementById('video-toggle');
-			const videoIframe = document.getElementById('hero-video');
+			const videoContainer = document.getElementById("video-container");
+			const videoToggle = document.getElementById("video-toggle");
+			const videoIframe = document.getElementById("hero-video");
 
 			if (videoContainer && videoToggle && videoIframe) {
 				const w = window as any;
 				let player: any = null;
 				let playerReady = false;
+				let pendingPlay = false;
+				let isPlaying = false;
+				let hideTimer: number | undefined;
+				let suppressUntil = 0;
 
-				const isPlayingState = (state: number) =>
-					state === w.YT.PlayerState.PLAYING || state === w.YT.PlayerState.BUFFERING;
+				// Mostra o botão por alguns instantes e esconde de novo (comportamento de player real)
+				const hideControls = () => {
+					window.clearTimeout(hideTimer);
+					videoContainer.classList.remove("show-controls");
+				};
+				const showControlsBriefly = (delay = 2000) => {
+					if (!isPlaying || Date.now() < suppressUntil) return;
+					videoContainer.classList.add("show-controls");
+					window.clearTimeout(hideTimer);
+					hideTimer = window.setTimeout(hideControls, delay);
+				};
+
+				const setPlayingUI = (playing: boolean) => {
+					isPlaying = playing;
+					videoContainer.classList.toggle("is-playing", playing);
+					videoToggle.setAttribute(
+						"aria-label",
+						playing ? "Pausar vídeo" : "Reproduzir vídeo",
+					);
+					if (playing) {
+						// Some imediatamente ao dar play e ignora o "tremido" do mouse logo após o clique
+						suppressUntil = Date.now() + 1200;
+					}
+					hideControls();
+				};
 
 				const initPlayer = () => {
+					const S = w.YT.PlayerState;
 					player = new w.YT.Player(videoIframe, {
 						events: {
 							onReady: () => {
 								playerReady = true;
+								if (pendingPlay) {
+									pendingPlay = false;
+									player.playVideo();
+								}
 							},
 							onStateChange: (event: any) => {
-								const playing = isPlayingState(event.data);
-								videoContainer.classList.toggle('is-playing', playing);
-								videoToggle.setAttribute('aria-label', playing ? 'Pausar vídeo' : 'Reproduzir vídeo');
+								const state = event.data;
+								// Ignora estados transitórios (UNSTARTED/CUED) para não piscar o botão
+								if (
+									state === S.PLAYING ||
+									state === S.BUFFERING
+								) {
+									if (!isPlaying) setPlayingUI(true);
+								} else if (
+									state === S.PAUSED ||
+									state === S.ENDED
+								) {
+									if (isPlaying) setPlayingUI(false);
+								}
 
 								// Ao terminar, volta ao início pausado (evita a tela de vídeos sugeridos)
-								if (event.data === w.YT.PlayerState.ENDED) {
+								if (state === S.ENDED) {
 									player.seekTo(0, true);
 									player.pauseVideo();
 								}
@@ -851,20 +1219,45 @@ const year = 2027;
 						previousReady?.();
 						initPlayer();
 					};
-					const ytScript = document.createElement('script');
-					ytScript.src = 'https://www.youtube.com/iframe_api';
+					const ytScript = document.createElement("script");
+					ytScript.src = "https://www.youtube.com/iframe_api";
 					ytScript.async = true;
 					document.head.appendChild(ytScript);
 				}
 
-				videoToggle.addEventListener('click', () => {
-					if (!player || !playerReady) return;
-					if (isPlayingState(player.getPlayerState())) {
-						player.pauseVideo();
+				videoToggle.addEventListener("click", () => {
+					// No touch, se o botão estiver escondido, o 1º toque só revela o controle
+					const isTouch = window.matchMedia("(hover: none)").matches;
+					if (
+						isTouch &&
+						isPlaying &&
+						!videoContainer.classList.contains("show-controls")
+					) {
+						suppressUntil = 0;
+						showControlsBriefly(2500);
+						return;
+					}
+
+					if (isPlaying) {
+						setPlayingUI(false);
+						pendingPlay = false;
+						if (player && playerReady) player.pauseVideo();
 					} else {
-						player.playVideo();
+						// Atualização otimista: o botão some na hora, sem esperar o YouTube responder
+						setPlayingUI(true);
+						if (player && playerReady) {
+							player.playVideo();
+						} else {
+							pendingPlay = true;
+						}
 					}
 				});
+
+				// Desktop: mexer o mouse sobre o vídeo revela o botão de pausa por 2s
+				videoToggle.addEventListener("mousemove", () =>
+					showControlsBriefly(),
+				);
+				videoToggle.addEventListener("mouseleave", hideControls);
 			}
 		</script>
 	</body>
@@ -879,7 +1272,12 @@ const year = 2027;
 	:root {
 		/* Hanzo Color Tokens */
 		--ds-bg: #d9d9d9;
-		--ds-bg-gradient: linear-gradient(225deg, #f7f7f7 0%, #ececec 45%, #d9d9d9 100%);
+		--ds-bg-gradient: linear-gradient(
+			225deg,
+			#f7f7f7 0%,
+			#ececec 45%,
+			#d9d9d9 100%
+		);
 		--ds-surface-raised: #ffffff;
 		--ds-surface-glass: rgba(255, 255, 255, 0.72);
 		--ds-surface-dark: #121212;
@@ -904,16 +1302,23 @@ const year = 2027;
 		--ds-ring-white: 0 0 0 8px rgba(255, 255, 255, 0.28);
 		--ds-ring-dark: 0 0 0 8px rgba(255, 255, 255, 0.12);
 		--ds-ring-accent: 0 0 0 6px rgba(255, 55, 0, 0.2);
-		--ds-shadow-raised: 0 16px 28px -6px rgba(0, 0, 0, 0.08), 0 6px 12px -4px rgba(0, 0, 0, 0.04);
-		--ds-shadow-floating: 0 24px 44px -8px rgba(0, 0, 0, 0.12), 0 10px 20px -5px rgba(0, 0, 0, 0.06);
+		--ds-shadow-raised:
+			0 16px 28px -6px rgba(0, 0, 0, 0.08),
+			0 6px 12px -4px rgba(0, 0, 0, 0.04);
+		--ds-shadow-floating:
+			0 24px 44px -8px rgba(0, 0, 0, 0.12),
+			0 10px 20px -5px rgba(0, 0, 0, 0.06);
 		--ds-shadow-dark: 0 24px 50px rgba(0, 0, 0, 0.45);
 		--ds-border-hairline: 1px solid rgba(0, 0, 0, 0.08);
 		--ds-border-dark-hairline: 1px solid rgba(255, 255, 255, 0.1);
 
 		/* Typography */
-		--ds-font-sans: 'Inter Display', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-		--ds-font-serif: 'Instrument Serif', Georgia, serif;
-		--ds-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+		--ds-font-sans:
+			"Inter Display", "Inter", -apple-system, BlinkMacSystemFont,
+			"Segoe UI", Roboto, sans-serif;
+		--ds-font-serif: "Instrument Serif", Georgia, serif;
+		--ds-font-mono:
+			ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
 
 		/* Layout */
 		--ds-max-w: 1200px;
@@ -968,21 +1373,45 @@ const year = 2027;
 		position: absolute;
 		height: 200%;
 		width: 140px;
-		background: linear-gradient(180deg, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 255, 0) 100%);
+		background: linear-gradient(
+			180deg,
+			rgba(255, 255, 255, 0.7) 0%,
+			rgba(255, 255, 255, 0) 100%
+		);
 		transform: skewX(45deg);
 		filter: blur(28px);
 	}
 
-	.ds-bg-ray:nth-child(1) { left: 10%; opacity: 0.45; width: 180px; }
-	.ds-bg-ray:nth-child(2) { left: 32%; opacity: 0.35; width: 120px; }
-	.ds-bg-ray:nth-child(3) { left: 55%; opacity: 0.5; width: 220px; }
-	.ds-bg-ray:nth-child(4) { left: 78%; opacity: 0.3; width: 160px; }
-	.ds-bg-ray:nth-child(5) { left: 92%; opacity: 0.4; width: 110px; }
+	.ds-bg-ray:nth-child(1) {
+		left: 10%;
+		opacity: 0.45;
+		width: 180px;
+	}
+	.ds-bg-ray:nth-child(2) {
+		left: 32%;
+		opacity: 0.35;
+		width: 120px;
+	}
+	.ds-bg-ray:nth-child(3) {
+		left: 55%;
+		opacity: 0.5;
+		width: 220px;
+	}
+	.ds-bg-ray:nth-child(4) {
+		left: 78%;
+		opacity: 0.3;
+		width: 160px;
+	}
+	.ds-bg-ray:nth-child(5) {
+		left: 92%;
+		opacity: 0.4;
+		width: 110px;
+	}
 
 	.ds-bg-noise {
 		position: absolute;
 		inset: 0;
-		background-image: url('/assets/noise.png');
+		background-image: url("/assets/noise.png");
 		background-repeat: repeat;
 		background-size: 150px auto;
 		opacity: 0.045;
@@ -1093,9 +1522,15 @@ const year = 2027;
 	}
 
 	@keyframes pulse-ring {
-		0% { box-shadow: 0 0 0 0 rgba(12, 179, 0, 0.6); }
-		70% { box-shadow: 0 0 0 8px rgba(12, 179, 0, 0); }
-		100% { box-shadow: 0 0 0 0 rgba(12, 179, 0, 0); }
+		0% {
+			box-shadow: 0 0 0 0 rgba(12, 179, 0, 0.6);
+		}
+		70% {
+			box-shadow: 0 0 0 8px rgba(12, 179, 0, 0);
+		}
+		100% {
+			box-shadow: 0 0 0 0 rgba(12, 179, 0, 0);
+		}
 	}
 
 	/* ==========================================================================
@@ -1136,11 +1571,19 @@ const year = 2027;
 	}
 
 	.ds-eyebrow-dark .ds-eyebrow-line {
-		background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3));
+		background: linear-gradient(
+			90deg,
+			transparent,
+			rgba(255, 255, 255, 0.3)
+		);
 	}
 
 	.ds-eyebrow-dark .ds-eyebrow-line.reverse {
-		background: linear-gradient(270deg, transparent, rgba(255, 255, 255, 0.3));
+		background: linear-gradient(
+			270deg,
+			transparent,
+			rgba(255, 255, 255, 0.3)
+		);
 	}
 
 	.ds-heading-display {
@@ -1190,7 +1633,9 @@ const year = 2027;
 		padding: 6px;
 		border-radius: var(--ds-radius-pill);
 		box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05);
-		transition: transform 0.25s ease, background-color 0.25s ease;
+		transition:
+			transform 0.25s ease,
+			background-color 0.25s ease;
 	}
 
 	.ds-btn-pill-wrap:hover {
@@ -1214,13 +1659,17 @@ const year = 2027;
 		border-radius: var(--ds-radius-pill);
 		border: 0;
 		cursor: pointer;
-		box-shadow: inset 0 -12px 24px rgba(255, 255, 255, 0.08), 0 8px 24px rgba(0, 0, 0, 0.25);
+		box-shadow:
+			inset 0 -12px 24px rgba(255, 255, 255, 0.08),
+			0 8px 24px rgba(0, 0, 0, 0.25);
 		transition: all 0.25s ease;
 	}
 
 	.ds-btn-pill:hover {
 		background: #181818;
-		box-shadow: inset 0 -12px 24px rgba(255, 255, 255, 0.12), 0 12px 30px rgba(0, 0, 0, 0.32);
+		box-shadow:
+			inset 0 -12px 24px rgba(255, 255, 255, 0.12),
+			0 12px 30px rgba(0, 0, 0, 0.32);
 	}
 
 	.ds-btn-pill .ds-btn-arrow {
@@ -1231,7 +1680,9 @@ const year = 2027;
 		height: 24px;
 		border-radius: 50%;
 		background: rgba(255, 255, 255, 0.18);
-		transition: transform 0.25s ease, background-color 0.25s ease;
+		transition:
+			transform 0.25s ease,
+			background-color 0.25s ease;
 	}
 
 	.ds-btn-pill:hover .ds-btn-arrow {
@@ -1272,12 +1723,16 @@ const year = 2027;
 	.ds-btn-pill.ds-btn-pill-pink {
 		background: linear-gradient(135deg, #1a1a1a 0%, #000000 100%);
 		color: #ffffff !important;
-		box-shadow: inset 0 -12px 24px rgba(255, 255, 255, 0.08), 0 8px 24px rgba(0, 0, 0, 0.3);
+		box-shadow:
+			inset 0 -12px 24px rgba(255, 255, 255, 0.08),
+			0 8px 24px rgba(0, 0, 0, 0.3);
 	}
 
 	.ds-btn-pill.ds-btn-pill-pink:hover {
 		background: linear-gradient(135deg, #2a2a2a 0%, #0a0a0a 100%);
-		box-shadow: inset 0 -12px 24px rgba(255, 255, 255, 0.12), 0 12px 30px rgba(0, 0, 0, 0.4);
+		box-shadow:
+			inset 0 -12px 24px rgba(255, 255, 255, 0.12),
+			0 12px 30px rgba(0, 0, 0, 0.4);
 	}
 
 	.ds-btn-pill.ds-btn-pill-pink .ds-btn-arrow {
@@ -1305,12 +1760,16 @@ const year = 2027;
 		border-radius: var(--ds-radius-pill);
 		box-shadow: var(--ds-ring-white), var(--ds-shadow-raised);
 		border: 1px solid rgba(255, 255, 255, 0.9);
-		transition: transform 0.2s, box-shadow 0.2s;
+		transition:
+			transform 0.2s,
+			box-shadow 0.2s;
 	}
 
 	.ds-btn-secondary:hover {
 		transform: translateY(-2px);
-		box-shadow: 0 0 0 10px rgba(255, 255, 255, 0.4), var(--ds-shadow-floating);
+		box-shadow:
+			0 0 0 10px rgba(255, 255, 255, 0.4),
+			var(--ds-shadow-floating);
 	}
 
 	/* ==========================================================================
@@ -1322,13 +1781,17 @@ const year = 2027;
 		box-shadow: var(--ds-ring-white), var(--ds-shadow-raised);
 		border: 1px solid rgba(255, 255, 255, 0.9);
 		padding: clamp(24px, 3.5vw, 36px);
-		transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+		transition:
+			transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+			box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 		position: relative;
 	}
 
 	.ds-card-raised:hover {
 		transform: translateY(-4px);
-		box-shadow: 0 0 0 10px rgba(255, 255, 255, 0.42), var(--ds-shadow-floating);
+		box-shadow:
+			0 0 0 10px rgba(255, 255, 255, 0.42),
+			var(--ds-shadow-floating);
 	}
 
 	/* Tilted spec cards (signature tactile rotation) */
@@ -1346,7 +1809,11 @@ const year = 2027;
 	}
 
 	.ds-card-dark {
-		background: radial-gradient(100% 100% at 0% 0%, #2a2a2a 0%, #101010 100%);
+		background: radial-gradient(
+			100% 100% at 0% 0%,
+			#2a2a2a 0%,
+			#101010 100%
+		);
 		color: #ffffff;
 		border-radius: 28px;
 		box-shadow: var(--ds-ring-dark), var(--ds-shadow-dark);
@@ -1413,7 +1880,9 @@ const year = 2027;
 		background: #141414;
 		border-radius: 24px;
 		padding: 12px;
-		box-shadow: 0 0 0 8px rgba(255, 255, 255, 0.32), 0 24px 60px rgba(0, 0, 0, 0.25);
+		box-shadow:
+			0 0 0 8px rgba(255, 255, 255, 0.32),
+			0 24px 60px rgba(0, 0, 0, 0.25);
 		border: 1px solid rgba(255, 255, 255, 0.2);
 		position: relative;
 	}
@@ -1446,9 +1915,15 @@ const year = 2027;
 		background: rgba(255, 255, 255, 0.2);
 	}
 
-	.ds-video-dot:nth-child(1) { background: #ff5f56; }
-	.ds-video-dot:nth-child(2) { background: #ffbd2e; }
-	.ds-video-dot:nth-child(3) { background: #27c93f; }
+	.ds-video-dot:nth-child(1) {
+		background: #ff5f56;
+	}
+	.ds-video-dot:nth-child(2) {
+		background: #ffbd2e;
+	}
+	.ds-video-dot:nth-child(3) {
+		background: #27c93f;
+	}
 
 	.ds-video-container {
 		position: relative;
@@ -1460,13 +1935,24 @@ const year = 2027;
 		background: #000000;
 	}
 
+	/*
+	 * Esconde título (topo), logo do YouTube e botão de link (rodapé):
+	 * o iframe fica mais alto que o container 16:9. O YouTube encaixa o vídeo pela
+	 * largura (continua 100% visível), e as sobreposições — que ficam presas às
+	 * bordas do iframe — caem nas faixas extras, cortadas pelo overflow: hidden.
+	 */
+	.ds-video-container {
+		--yt-crop: 90px;
+	}
+
 	.ds-video-container iframe {
 		position: absolute;
-		top: 0;
+		top: calc(var(--yt-crop) * -1);
 		left: 0;
 		width: 100%;
-		height: 100%;
+		height: calc(100% + var(--yt-crop) * 2);
 		border: 0;
+		pointer-events: none;
 	}
 
 	/* Custom Play/Pause overlay — cobre o iframe e bloqueia cliques nos links do YouTube */
@@ -1497,8 +1983,12 @@ const year = 2027;
 		color: #ffffff;
 		backdrop-filter: blur(6px);
 		-webkit-backdrop-filter: blur(6px);
-		box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.14), 0 10px 28px rgba(0, 0, 0, 0.4);
-		transition: opacity 0.25s ease, transform 0.25s ease;
+		box-shadow:
+			0 0 0 6px rgba(255, 255, 255, 0.14),
+			0 10px 28px rgba(0, 0, 0, 0.4);
+		transition:
+			opacity 0.25s ease,
+			transform 0.25s ease;
 	}
 
 	.ds-video-toggle-icon svg {
@@ -1514,8 +2004,13 @@ const year = 2027;
 		display: none;
 	}
 
-	.ds-video-toggle:hover .ds-video-toggle-icon {
-		transform: scale(1.06);
+	/* Hover só em dispositivos com mouse (evita o "hover preso" após toque no celular) */
+	@media (hover: hover) {
+		.ds-video-container:not(.is-playing)
+			.ds-video-toggle:hover
+			.ds-video-toggle-icon {
+			transform: scale(1.06);
+		}
 	}
 
 	.ds-video-container.is-playing .ds-icon-play {
@@ -1526,14 +2021,21 @@ const year = 2027;
 		display: block;
 	}
 
-	/* Durante a reprodução o botão some e só aparece ao passar o mouse / focar */
+	/* Durante a reprodução o botão some; volta só ao mexer o mouse / tocar (via JS) ou focar pelo teclado */
 	.ds-video-container.is-playing .ds-video-toggle-icon {
 		opacity: 0;
-		transform: scale(0.9);
+		transform: scale(0.85);
+		pointer-events: none;
 	}
 
-	.ds-video-container.is-playing .ds-video-toggle:hover .ds-video-toggle-icon,
-	.ds-video-container.is-playing .ds-video-toggle:focus-visible .ds-video-toggle-icon {
+	.ds-video-container.is-playing:not(.show-controls) .ds-video-toggle {
+		cursor: none;
+	}
+
+	.ds-video-container.is-playing.show-controls .ds-video-toggle-icon,
+	.ds-video-container.is-playing
+		.ds-video-toggle:focus-visible
+		.ds-video-toggle-icon {
 		opacity: 1;
 		transform: scale(1);
 	}
@@ -1657,14 +2159,14 @@ const year = 2027;
 	}
 
 	.ds-feature-meta {
-		font-size: 12px;
+		font-size: 13.8px;
+		font-weight: 700;
 		font-family: var(--ds-font-mono);
 		color: var(--ds-text-tertiary);
 	}
 
 	.ds-feature-meta.is-bonus {
 		color: var(--ds-accent);
-		font-weight: 600;
 	}
 
 	.ds-feature-media {
@@ -1799,7 +2301,9 @@ const year = 2027;
 		margin: 0 auto;
 		background: #ffffff;
 		border-radius: 28px;
-		box-shadow: 0 0 0 10px rgba(255, 255, 255, 0.4), 0 30px 60px -12px rgba(0, 0, 0, 0.14);
+		box-shadow:
+			0 0 0 10px rgba(255, 255, 255, 0.4),
+			0 30px 60px -12px rgba(0, 0, 0, 0.14);
 		border: 1px solid rgba(255, 255, 255, 0.95);
 		overflow: hidden;
 		position: relative;
@@ -2039,14 +2543,18 @@ const year = 2027;
 		background: rgba(255, 255, 255, 0.88);
 		backdrop-filter: blur(14px);
 		border-radius: 16px;
-		box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.22), 0 4px 12px rgba(0, 0, 0, 0.04);
+		box-shadow:
+			0 0 0 6px rgba(255, 255, 255, 0.22),
+			0 4px 12px rgba(0, 0, 0, 0.04);
 		border: 1px solid rgba(255, 255, 255, 0.9);
 		overflow: hidden;
 		transition: all 0.25s ease;
 	}
 
 	.ds-faq-item.active {
-		box-shadow: 0 0 0 8px rgba(255, 255, 255, 0.35), var(--ds-shadow-raised);
+		box-shadow:
+			0 0 0 8px rgba(255, 255, 255, 0.35),
+			var(--ds-shadow-raised);
 	}
 
 	.ds-faq-trigger {
@@ -2076,7 +2584,10 @@ const year = 2027;
 		place-items: center;
 		flex-shrink: 0;
 		color: var(--ds-ink);
-		transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+		transition:
+			transform 0.3s ease,
+			background-color 0.3s ease,
+			color 0.3s ease;
 	}
 
 	.ds-faq-item.active .ds-faq-icon {
@@ -2088,7 +2599,9 @@ const year = 2027;
 	.ds-faq-content {
 		max-height: 0;
 		overflow: hidden;
-		transition: max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1), padding 0.35s ease;
+		transition:
+			max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+			padding 0.35s ease;
 		padding: 0 24px;
 	}
 
@@ -2122,7 +2635,11 @@ const year = 2027;
 		inset: 0;
 		pointer-events: none;
 		opacity: 0.05;
-		background: radial-gradient(100% 100% at 50% 0%, #ffffff 0%, transparent 80%);
+		background: radial-gradient(
+			100% 100% at 50% 0%,
+			#ffffff 0%,
+			transparent 80%
+		);
 	}
 
 	.ds-footer-grid {
