@@ -122,11 +122,11 @@ const checklist = [
 		rest: " (Google Sheets) pronta para duplicar e usar",
 	},
 	{
-		strong: "Módulo de Projetos Táticos",
+		strong: "Projetos Táticos",
 		rest: " para detalhar etapas e prazos de qualquer meta",
 	},
 	{
-		strong: "Módulo Planner Tático (GPS)",
+		strong: "Planner Tático (GPS)",
 		rest: " para organização das suas tarefas diárias e semanais",
 	},
 	{
@@ -138,7 +138,7 @@ const checklist = [
 		rest: "",
 	},
 	{
-		strong: "Aulas didáticas de implementação",
+		strong: "Aula única e didática de implementação",
 		rest: " ensinando como utilizar cada ferramenta",
 	},
 	{ strong: "Suporte individual dedicado:", rest: " Via e-mail" },
@@ -1979,16 +1979,17 @@ const year = 2027;
 		width: 76px;
 		height: 76px;
 		border-radius: 50%;
-		background: rgba(0, 0, 0, 0.72);
+		background: #ff0000;
 		color: #ffffff;
 		backdrop-filter: blur(6px);
 		-webkit-backdrop-filter: blur(6px);
 		box-shadow:
-			0 0 0 6px rgba(255, 255, 255, 0.14),
-			0 10px 28px rgba(0, 0, 0, 0.4);
+			0 0 0 6px rgba(255, 255, 255, 0.2),
+			0 10px 28px rgba(0, 0, 0, 0.45);
 		transition:
 			opacity 0.25s ease,
-			transform 0.25s ease;
+			transform 0.25s ease,
+			background-color 0.25s ease;
 	}
 
 	.ds-video-toggle-icon svg {
@@ -2010,6 +2011,7 @@ const year = 2027;
 			.ds-video-toggle:hover
 			.ds-video-toggle-icon {
 			transform: scale(1.06);
+			background: #e60000;
 		}
 	}
 
